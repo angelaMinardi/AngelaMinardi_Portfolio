@@ -4,102 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <title>Angela Minardi - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <h1>Angela Minardi</h1>
-        <nav>
-            <ul>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <h1 class="logo">Angela Minardi</h1>
+            <ul class="nav-links">
                 <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Technical Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <!-- About Me Section -->
-        <section id="about">
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to My Portfolio</h2>
+                <p>Exploring the intersection of technology and innovation.</p>
+                <a href="#projects" class="btn">View My Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
             <h2>About Me</h2>
-            <p>
-                <strong>Location:</strong> 18611 Mink Hollow Rd, Highland, MD 20777<br>
-                <strong>Phone:</strong> (301) 775-6380<br>
-                <strong>Email:</strong> <a href="mailto:r.minardi.angela@gmail.com">r.minardi.angela@gmail.com</a>
-            </p>
-            <h3>Education</h3>
-            <p>
-                <strong>Western Governor’s University</strong><br>
-                Bachelor of Science, Computer Science<br>
-                Anticipated Graduation: Fall 2024
-            </p>
-            <p><em>Relevant Coursework:</em> Object Oriented Programming I and II, Data Structures and Algorithms,
-                Database Design, Network Security Foundations</p>
-            <h3>Technical Skills</h3>
-            <ul>
-                <li><strong>Networking:</strong> Studying for CCNA certification, TCP/IP protocols, OSI Model, Network
-                    troubleshooting</li>
-                <li><strong>Programming Languages:</strong> Java, Python, C++, C#</li>
-                <li><strong>Data Processing:</strong> Oracle SQL database design, Microsoft Azure IoT Hub, AWS Cloud
-                    Computing</li>
-            </ul>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>5G Wireless Network Simulation</h3>
-                <p>Developed a simulation tool to model and analyze the performance of 5G wireless networks using NS-3.
+            <div class="about-content">
+                <img src="images/profile.jpg" alt="Angela Minardi">
+                <p>
+                    I am a Computer Science graduate with a passion for networking, software development, and emerging
+                    technologies. My goal is to leverage my technical skills and knowledge to contribute to innovative
+                    projects and make a meaningful impact in the field of technology.
                 </p>
-                <ul>
-                    <li>Simulated key performance metrics like throughput, latency, and packet loss.</li>
-                    <li>Configured gNB and UE nodes with mobility models.</li>
-                    <li>Implemented data traffic to analyze network performance.</li>
-                </ul>
-                <a href="#contact">Contact me for more details</a>
             </div>
-            <div class="project">
-                <h3>Blockchain Implementation</h3>
-                <p>Built a simplified blockchain from scratch to understand distributed ledger technology.</p>
-                <ul>
-                    <li>Implemented core concepts like blocks, transactions, and consensus algorithms.</li>
-                    <li>Used cryptographic hashing to secure block data.</li>
-                    <li>Simulated a peer-to-peer network to demonstrate decentralization.</li>
-                </ul>
-                <a href="#contact">Contact me for more details</a>
-            </div>
-            <div class="project">
-                <h3>AI-Powered Chatbot</h3>
-                <p>Created a chatbot using machine learning for natural language processing and understanding.</p>
-                <ul>
-                    <li>Developed using Python and TensorFlow.</li>
-                    <li>Trained on a dataset to respond to user inputs in a conversational manner.</li>
-                    <li>Implemented using a web interface for user interaction.</li>
-                </ul>
-                <a href="#contact">Interact with the chatbot</a>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-content">
+                <h3>Western Governor’s University <span>Anticipated: Fall 2024</span></h3>
+                <p><strong>Bachelor of Science, Computer Science</strong></p>
+                <p>
+                    Relevant Coursework: Object Oriented Programming I and II, Data Structures and Algorithms, Database
+                    Design, Network Security Foundations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Networking</h3>
+                    <ul>
+                        <li>Studying for Cisco Certified Network Associate (CCNA) certification</li>
+                        <li>TCP/IP protocols</li>
+                        <li>OSI Model</li>
+                        <li>Network troubleshooting</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>C#</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Processing</h3>
+                    <ul>
+                        <li>Oracle SQL database design</li>
+                        <li>Microsoft Azure IoT Hub</li>
+                        <li>AWS Cloud Computing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-content">
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <img src="images/project1.jpg" alt="5G Wireless Network Simulation">
+                    <h3><a href="project1.html">5G Wireless Network Simulation</a></h3>
+                    <p>Simulated 5G network performance using NS-3 to analyze throughput, latency, and packet loss under
+                        various conditions.</p>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-item">
+                    <img src="images/project2.jpg" alt="Blockchain Implementation">
+                    <h3><a href="project2.html">Blockchain Implementation</a></h3>
+                    <p>Developed a simplified blockchain to understand distributed ledger technology and consensus
+                        algorithms.</p>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <img src="images/project3.jpg" alt="AI-Powered Chatbot">
+                    <h3><a href="project3.html">AI-Powered Chatbot</a></h3>
+                    <p>Created a chatbot using machine learning for natural language processing and understanding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
             <h2>Contact Me</h2>
-            <p>If you're interested in my work or have any questions, feel free to reach out!</p>
-            <form action="mailto:r.minardi.angela@gmail.com" method="POST" enctype="text/plain">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
+            <div class="contact-content">
+                <p><i class="fas fa-envelope"></i> <a
+                        href="mailto:r.minardi.angela@gmail.com">r.minardi.angela@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> 301-775-6380</p>
+                <p><i class="fas fa-map-marker-alt"></i> 18611 Mink Hollow Rd, Highland, MD 20777</p>
+                <!-- Social Media Links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github"></i></a>
+                    <!-- Add other social media icons as needed -->
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Angela Minardi. All rights reserved.</p>
+        </div>
+    </footer>
 
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="5" required></textarea><br>
-
-                <input type="submit" value="Send">
-            </form>
-        </section>
-    </main>
-    <script src="script.js"></script>
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
