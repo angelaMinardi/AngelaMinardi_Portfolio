@@ -3,56 +3,73 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>AI-Powered Chatbot</title>
+    <title>AI-Powered Chatbot - Angela Minardi</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav>
         <div class="container">
-            <h1 class="logo"><a href="index.html">Angela Minardi</a></h1>
+            <a href="index.html" class="logo">Angela Minardi</a>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul class="nav-links">
-                <li><a href="index.html#about">About Me</a></li>
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#skills">Technical Skills</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
-    </nav>    
+    </nav>
 
-    <!-- Project Content -->
+    <!-- Project Detail Section -->
     <section id="project-detail">
         <div class="container">
             <h2>AI-Powered Chatbot</h2>
-            <img src="images/project3.jpg" alt="AI-Powered Chatbot">
-            <p>
-                I developed a chatbot that uses machine learning techniques to understand and respond to user inputs in
-                a conversational manner. The chatbot serves as a personal assistant, capable of answering questions and
-                performing simple tasks.
-            </p>
-            <h3>Key Features:</h3>
-            <ul>
-                <li>Natural Language Processing using NLTK and spaCy</li>
-                <li>Machine learning models developed with TensorFlow</li>
-                <li>Integrated with a web-based user interface</li>
-            </ul>
-            <h3>Technologies Used:</h3>
-            <ul>
-                <li>Python programming language</li>
-                <li>TensorFlow and Keras for machine learning</li>
-                <li>Flask for web framework</li>
-            </ul>
-            <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank">View Code on GitHub</a>
+            <div class="project-detail-content">
+                <img src="images/project3.jpg" alt="AI-Powered Chatbot" class="detail-img">
+                <p>
+                    I developed a chatbot that uses machine learning techniques to understand and respond to user inputs
+                    in a conversational manner. The chatbot serves as a personal assistant, capable of answering
+                    questions and performing simple tasks.
+                </p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Natural Language Processing using NLTK and spaCy</li>
+                    <li>Machine learning models developed with TensorFlow</li>
+                    <li>Integrated with a web-based user interface</li>
+                </ul>
+                <h3>Technologies Used:</h3>
+                <ul>
+                    <li>Python programming language</li>
+                    <li>TensorFlow and Keras for machine learning</li>
+                    <li>Flask for web framework</li>
+                </ul>
+                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"><i
+                        class="fab fa-github"></i> View Code on GitHub</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Angela Minardi. All rights reserved.</p>
+            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
         </div>
-    </footer></body>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
 
 </html>

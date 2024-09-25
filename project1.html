@@ -3,58 +3,74 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>5G Wireless Network Simulation</title>
+    <title>5G Wireless Network Simulation - Angela Minardi</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav>
         <div class="container">
-            <h1 class="logo"><a href="index.html">Angela Minardi</a></h1>
+            <a href="index.html" class="logo">Angela Minardi</a>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul class="nav-links">
-                <li><a href="index.html#about">About Me</a></li>
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#skills">Technical Skills</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Project Content -->
+    <!-- Project Detail Section -->
     <section id="project-detail">
         <div class="container">
             <h2>5G Wireless Network Simulation</h2>
-            <img src="images/project1.jpg" alt="5G Wireless Network Simulation">
-            <p>
-                In this project, I developed a simulation tool to model and analyze the performance of 5G wireless
-                networks using NS-3. The simulator allows users to configure network parameters and visualize how
-                changes affect network performance, focusing on key metrics such as throughput, latency, and packet
-                loss.
-            </p>
-            <h3>Key Features:</h3>
-            <ul>
-                <li>Simulated gNB (5G base stations) and UEs (User Equipment)</li>
-                <li>Implemented mobility models for realistic movement of UEs</li>
-                <li>Analyzed performance metrics under varying network conditions</li>
-            </ul>
-            <h3>Technologies Used:</h3>
-            <ul>
-                <li>C++ programming language</li>
-                <li>NS-3 network simulator</li>
-                <li>Gnuplot for data visualization</li>
-            </ul>
-            <a href="https://github.com/yourgithub/5g-simulation" class="btn" target="_blank">View Code on GitHub</a>
+            <div class="project-detail-content">
+                <img src="images/project1.jpg" alt="5G Wireless Network Simulation" class="detail-img">
+                <p>
+                    In this project, I developed a simulation tool to model and analyze the performance of 5G wireless
+                    networks using NS-3. The simulator allows users to configure network parameters and visualize how
+                    changes affect network performance, focusing on key metrics such as throughput, latency, and packet
+                    loss.
+                </p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Simulated gNB (5G base stations) and UEs (User Equipment)</li>
+                    <li>Implemented mobility models for realistic movement of UEs</li>
+                    <li>Analyzed performance metrics under varying network conditions</li>
+                </ul>
+                <h3>Technologies Used:</h3>
+                <ul>
+                    <li>C++ programming language</li>
+                    <li>NS-3 network simulator</li>
+                    <li>Gnuplot for data visualization</li>
+                </ul>
+                <a href="https://github.com/yourgithub/5g-simulation" class="btn" target="_blank"><i
+                        class="fab fa-github"></i> View Code on GitHub</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Angela Minardi. All rights reserved.</p>
+            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>

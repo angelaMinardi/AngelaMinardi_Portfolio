@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <title>Angela Minardi - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Add Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav>
         <div class="container">
-            <h1 class="logo">Angela Minardi</h1>
+            <a href="index.html" class="logo">Angela Minardi</a>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Technical Skills</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -30,9 +36,9 @@
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <h2>Welcome to My Portfolio</h2>
-                <p>Exploring the intersection of technology and innovation.</p>
-                <a href="#projects" class="btn">View My Projects</a>
+                <h1>Hi, I'm Angela Minardi</h1>
+                <p>Passionate Computer Scientist | Networking Enthusiast | Innovator</p>
+                <a href="#projects" class="btn">Explore My Work</a>
             </div>
         </div>
     </section>
@@ -42,12 +48,20 @@
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
-                <img src="images/profile.jpg" alt="Angela Minardi">
-                <p>
-                    I am a Computer Science graduate with a passion for networking, software development, and emerging
-                    technologies. My goal is to leverage my technical skills and knowledge to contribute to innovative
-                    projects and make a meaningful impact in the field of technology.
-                </p>
+                <img src="images/profile.jpg" alt="Angela Minardi" class="profile-img">
+                <div class="about-text">
+                    <p>
+                        I am a Computer Science graduate with a passion for networking, software development, and
+                        emerging technologies. My goal is to leverage my technical skills and knowledge to contribute to
+                        innovative projects and make a meaningful impact in the field of technology.
+                    </p>
+                    <p>
+                        With a strong foundation in programming languages such as Java, Python, and C++, I have
+                        developed a keen interest in areas like 5G network simulations, blockchain technologies, and
+                        AI-driven solutions. I thrive in collaborative environments and am committed to continuous
+                        learning and professional growth.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -57,12 +71,15 @@
         <div class="container">
             <h2>Education</h2>
             <div class="education-content">
-                <h3>Western Governor’s University <span>Anticipated: Fall 2024</span></h3>
-                <p><strong>Bachelor of Science, Computer Science</strong></p>
-                <p>
-                    Relevant Coursework: Object Oriented Programming I and II, Data Structures and Algorithms, Database
-                    Design, Network Security Foundations.
-                </p>
+                <div class="education-item">
+                    <h3>Western Governor’s University</h3>
+                    <span class="date">Anticipated: Fall 2024</span>
+                    <p><strong>Bachelor of Science, Computer Science</strong></p>
+                    <p>
+                        Relevant Coursework: Object-Oriented Programming I & II, Data Structures and Algorithms,
+                        Database Design, Network Security Foundations.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -75,10 +92,10 @@
                 <div class="skill-category">
                     <h3>Networking</h3>
                     <ul>
-                        <li>Studying for Cisco Certified Network Associate (CCNA) certification</li>
-                        <li>TCP/IP protocols</li>
+                        <li>Cisco Certified Network Associate (CCNA) - In Progress</li>
+                        <li>TCP/IP Protocols</li>
                         <li>OSI Model</li>
-                        <li>Network troubleshooting</li>
+                        <li>Network Troubleshooting</li>
                     </ul>
                 </div>
                 <div class="skill-category">
@@ -91,11 +108,12 @@
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Data Processing</h3>
+                    <h3>Data Processing & Cloud</h3>
                     <ul>
-                        <li>Oracle SQL database design</li>
+                        <li>Oracle SQL Database Design</li>
                         <li>Microsoft Azure IoT Hub</li>
                         <li>AWS Cloud Computing</li>
+                        <li>Data Visualization with Gnuplot</li>
                     </ul>
                 </div>
             </div>
@@ -109,21 +127,36 @@
             <div class="projects-content">
                 <!-- Project 1 -->
                 <div class="project-item">
-                    <img src="images/project1.jpg" alt="5G Wireless Network Simulation">
+                    <div class="project-img">
+                        <img src="images/project1.jpg" alt="5G Wireless Network Simulation">
+                        <div class="overlay">
+                            <a href="project1.html" class="project-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
                     <h3><a href="project1.html">5G Wireless Network Simulation</a></h3>
                     <p>Simulated 5G network performance using NS-3 to analyze throughput, latency, and packet loss under
                         various conditions.</p>
                 </div>
                 <!-- Project 2 -->
                 <div class="project-item">
-                    <img src="images/project2.jpg" alt="Blockchain Implementation">
+                    <div class="project-img">
+                        <img src="images/project2.jpg" alt="Blockchain Implementation">
+                        <div class="overlay">
+                            <a href="project2.html" class="project-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
                     <h3><a href="project2.html">Blockchain Implementation</a></h3>
                     <p>Developed a simplified blockchain to understand distributed ledger technology and consensus
                         algorithms.</p>
                 </div>
                 <!-- Project 3 -->
                 <div class="project-item">
-                    <img src="images/project3.jpg" alt="AI-Powered Chatbot">
+                    <div class="project-img">
+                        <img src="images/project3.jpg" alt="AI-Powered Chatbot">
+                        <div class="overlay">
+                            <a href="project3.html" class="project-link"><i class="fas fa-eye"></i> View Project</a>
+                        </div>
+                    </div>
                     <h3><a href="project3.html">AI-Powered Chatbot</a></h3>
                     <p>Created a chatbot using machine learning for natural language processing and understanding.</p>
                 </div>
@@ -136,17 +169,31 @@
         <div class="container">
             <h2>Contact Me</h2>
             <div class="contact-content">
-                <p><i class="fas fa-envelope"></i> <a
-                        href="mailto:r.minardi.angela@gmail.com">r.minardi.angela@gmail.com</a></p>
-                <p><i class="fas fa-phone"></i> 301-775-6380</p>
-                <p><i class="fas fa-map-marker-alt"></i> 18611 Mink Hollow Rd, Highland, MD 20777</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> <a
+                            href="mailto:r.minardi.angela@gmail.com">r.minardi.angela@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+13017756380">301-775-6380</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Highland, MD 20777</p>
+                </div>
                 <!-- Social Media Links -->
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i
                             class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/yourgithub" target="_blank" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
                     <!-- Add other social media icons as needed -->
                 </div>
+                <!-- Contact Form (Optional) -->
+                <!-- 
+                <form action="mailto:r.minardi.angela@gmail.com" method="post" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                -->
             </div>
         </div>
     </section>
@@ -154,7 +201,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Angela Minardi. All rights reserved.</p>
+            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
         </div>
     </footer>
 
