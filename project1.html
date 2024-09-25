@@ -9,8 +9,24 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Prism.js JS for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Detailed overview of Angela Minardi's 5G Wireless Network Simulation project, showcasing key features and technologies used.">
+    <meta name="keywords"
+        content="Angela Minardi, 5G Wireless Network Simulation, NS-3, C++, Network Performance, Throughput, Latency, Packet Loss">
+    <!-- Viewport for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -18,7 +34,7 @@
     <nav>
         <div class="container">
             <a href="index.html" class="logo">Angela Minardi</a>
-            <div class="nav-toggle">
+            <div class="nav-toggle" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
@@ -37,7 +53,7 @@
         <div class="container">
             <h2>5G Wireless Network Simulation</h2>
             <div class="project-detail-content">
-                <img src="images/project1.jpg" alt="5G Wireless Network Simulation" class="detail-img">
+                <img src="images/project1.jpg" alt="5G Wireless Network Simulation" class="detail-img" loading="lazy">
                 <p>
                     In this project, I developed a simulation tool to model and analyze the performance of 5G wireless
                     networks using NS-3. The simulator allows users to configure network parameters and visualize how
@@ -49,23 +65,129 @@
                     <li>Simulated gNB (5G base stations) and UEs (User Equipment)</li>
                     <li>Implemented mobility models for realistic movement of UEs</li>
                     <li>Analyzed performance metrics under varying network conditions</li>
+                    <li>Customizable network topologies and traffic patterns</li>
                 </ul>
                 <h3>Technologies Used:</h3>
                 <ul>
                     <li>C++ programming language</li>
                     <li>NS-3 network simulator</li>
                     <li>Gnuplot for data visualization</li>
+                    <li>Git for version control</li>
                 </ul>
-                <a href="https://github.com/yourgithub/5g-simulation" class="btn" target="_blank"><i
-                        class="fab fa-github"></i> View Code on GitHub</a>
+                <a href="https://github.com/yourgithub/5g-simulation" class="btn" target="_blank"
+                    aria-label="View Code on GitHub">
+                    <i class="fab fa-github"></i> View Code on GitHub
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Simulation Controls and Visualization -->
+    <section id="simulation">
+        <div class="container">
+            <h3>Simulation Controls</h3>
+            <div class="controls">
+                <label for="bandwidth">Bandwidth (MHz): <span id="bandwidth-value">100</span></label>
+                <input type="range" id="bandwidth" name="bandwidth" min="50" max="200" value="100">
+
+                <label for="user-density">User Density (users/km²): <span id="user-density-value">500</span></label>
+                <input type="range" id="user-density" name="user-density" min="100" max="1000" value="500">
+
+                <!-- Add more controls as needed -->
+            </div>
+
+            <h3>Network Performance Metrics</h3>
+            <canvas id="performanceChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <!-- Network Topology Diagram -->
+    <section id="topology">
+        <div class="container">
+            <h3>Network Topology</h3>
+            <div id="networkDiagram"></div>
+        </div>
+    </section>
+
+    <!-- Downloadable Reports -->
+    <section id="download-reports">
+        <div class="container">
+            <h3>Download Simulation Reports</h3>
+            <div class="download-buttons">
+                <button id="download-csv" class="btn">Download CSV Data</button>
+                <button id="download-pdf" class="btn">Download PDF Report</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Snippets -->
+    <section id="code-snippets">
+        <div class="container">
+            <h3>Key Code Snippets</h3>
+            <pre><code class="language-cpp">
+// Example: Block Class in 5G Simulation
+#include <string>
+#include <vector>
+#include <ctime>
+
+class Block {
+public:
+    int index;
+    std::vector<std::string> transactions;
+    time_t timestamp;
+    std::string previousHash;
+    int nonce;
+    std::string hash;
+
+    Block(int idx, std::vector<std::string> tx, std::string prevHash) {
+        index = idx;
+        transactions = tx;
+        timestamp = time(nullptr);
+        previousHash = prevHash;
+        nonce = 0;
+        hash = calculateHash();
+    }
+
+    std::string calculateHash() {
+        // Implement hashing logic here
+    }
+
+    void mineBlock(int difficulty) {
+        // Implement proof of work here
+    }
+};
+            </code></pre>
+            <!-- Add more code snippets as needed -->
+        </div>
+    </section>
+
+    <!-- Video Demonstration -->
+    <section id="video-demo">
+        <div class="container">
+            <h3>Simulation Demonstration</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
+                    title="5G Wireless Network Simulation Demo" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#hero" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </footer>
 

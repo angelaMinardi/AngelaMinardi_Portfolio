@@ -9,8 +9,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Prism.js JS for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Detailed overview of Angela Minardi's Blockchain Implementation project, showcasing key features and technologies used.">
+    <meta name="keywords" content="Angela Minardi, Blockchain, Implementation, Python, Flask, Hashing, Proof of Work">
+    <!-- Viewport for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -18,7 +33,7 @@
     <nav>
         <div class="container">
             <a href="index.html" class="logo">Angela Minardi</a>
-            <div class="nav-toggle">
+            <div class="nav-toggle" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
@@ -37,10 +52,10 @@
         <div class="container">
             <h2>Blockchain Implementation</h2>
             <div class="project-detail-content">
-                <img src="images/project2.jpg" alt="Blockchain Implementation" class="detail-img">
+                <img src="images/project2.jpg" alt="Blockchain Implementation" class="detail-img" loading="lazy">
                 <p>
                     This project involved building a simplified blockchain from scratch to understand the underlying
-                    mechanisms of distributed ledger technology. The blockchain supports basic functionalities such as
+                    mechanisms of distributed ledger technology. The blockchain supports core functionalities such as
                     adding transactions, mining blocks, and validating the chain.
                 </p>
                 <h3>Key Features:</h3>
@@ -48,23 +63,128 @@
                     <li>Implemented Proof of Work consensus algorithm</li>
                     <li>Used cryptographic hashing for block security</li>
                     <li>Simulated a network of nodes for decentralization</li>
+                    <li>Developed transaction validation and chain integrity checks</li>
                 </ul>
                 <h3>Technologies Used:</h3>
                 <ul>
                     <li>Python programming language</li>
-                    <li>Flask for web interface (optional)</li>
+                    <li>Flask for web interface</li>
                     <li>Hashlib library for hashing functions</li>
+                    <li>Git for version control</li>
                 </ul>
-                <a href="https://github.com/yourgithub/blockchain-implementation" class="btn" target="_blank"><i
-                        class="fab fa-github"></i> View Code on GitHub</a>
+                <a href="https://github.com/yourgithub/blockchain-implementation" class="btn" target="_blank"
+                    aria-label="View Code on GitHub">
+                    <i class="fab fa-github"></i> View Code on GitHub
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Blockchain Explorer -->
+    <section id="blockchain-explorer">
+        <div class="container">
+            <h3>Blockchain Explorer</h3>
+            <div id="explorerDiagram"></div>
+        </div>
+    </section>
+
+    <!-- Smart Contract Demonstration -->
+    <section id="smart-contract">
+        <div class="container">
+            <h3>Smart Contract Demo</h3>
+            <div class="smart-contract-container">
+                <button id="execute-contract" class="btn">Execute Smart Contract</button>
+                <div id="contract-output"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Snippets -->
+    <section id="code-snippets">
+        <div class="container">
+            <h3>Key Code Snippets</h3>
+            <pre><code class="language-python">
+// Example: Proof of Work Implementation
+import hashlib
+import time
+
+class Block:
+    def __init__(self, index, transactions, timestamp, previous_hash, nonce=0):
+        self.index = index
+        self.transactions = transactions
+        self.timestamp = timestamp
+        self.previous_hash = previous_hash
+        self.nonce = nonce
+        self.hash = self.compute_hash()
+    
+    def compute_hash(self):
+        block_string = str(self.__dict__)
+        return hashlib.sha256(block_string.encode()).hexdigest()
+    
+    def proof_of_work(self, difficulty):
+        self.nonce = 0
+        computed_hash = self.compute_hash()
+        while not computed_hash.startswith('0' * difficulty):
+            self.nonce += 1
+            computed_hash = self.compute_hash()
+        self.hash = computed_hash
+        return computed_hash
+            </code></pre>
+            <!-- Add more code snippets as needed -->
+        </div>
+    </section>
+
+    <!-- Blockchain Structure Diagram -->
+    <section id="blockchain-diagram">
+        <div class="container">
+            <h3>Blockchain Structure</h3>
+            <div id="blockchainDiagram"></div>
+        </div>
+    </section>
+
+    <!-- Downloadable Code and Documentation -->
+    <section id="download-code">
+        <div class="container">
+            <h3>Access Source Code and Documentation</h3>
+            <div class="download-buttons">
+                <a href="https://github.com/yourgithub/blockchain-implementation" class="btn" target="_blank"
+                    aria-label="View GitHub Repository">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="docs/blockchain_report.pdf" class="btn" target="_blank" aria-label="Download PDF Report">
+                    <i class="fas fa-file-pdf"></i> Download Report
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Walkthrough -->
+    <section id="video-demo">
+        <div class="container">
+            <h3>Project Walkthrough</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
+                    title="Blockchain Implementation Walkthrough" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#hero" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </footer>
 

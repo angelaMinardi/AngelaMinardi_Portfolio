@@ -9,8 +9,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Prism.js JS for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Detailed overview of Angela Minardi's AI-Powered Chatbot project, showcasing key features and technologies used.">
+    <meta name="keywords" content="Angela Minardi, AI Chatbot, Machine Learning, NLP, Python, TensorFlow, Flask">
+    <!-- Viewport for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -18,7 +33,7 @@
     <nav>
         <div class="container">
             <a href="index.html" class="logo">Angela Minardi</a>
-            <div class="nav-toggle">
+            <div class="nav-toggle" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
@@ -37,7 +52,7 @@
         <div class="container">
             <h2>AI-Powered Chatbot</h2>
             <div class="project-detail-content">
-                <img src="images/project3.jpg" alt="AI-Powered Chatbot" class="detail-img">
+                <img src="images/project3.jpg" alt="AI-Powered Chatbot" class="detail-img" loading="lazy">
                 <p>
                     I developed a chatbot that uses machine learning techniques to understand and respond to user inputs
                     in a conversational manner. The chatbot serves as a personal assistant, capable of answering
@@ -48,23 +63,121 @@
                     <li>Natural Language Processing using NLTK and spaCy</li>
                     <li>Machine learning models developed with TensorFlow</li>
                     <li>Integrated with a web-based user interface</li>
+                    <li>Supports multiple languages and intents</li>
                 </ul>
                 <h3>Technologies Used:</h3>
                 <ul>
                     <li>Python programming language</li>
                     <li>TensorFlow and Keras for machine learning</li>
                     <li>Flask for web framework</li>
+                    <li>JavaScript for frontend interactivity</li>
                 </ul>
-                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"><i
-                        class="fab fa-github"></i> View Code on GitHub</a>
+                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
+                    aria-label="View Code on GitHub">
+                    <i class="fab fa-github"></i> View Code on GitHub
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Live Chatbot Demo -->
+    <section id="chatbot-demo">
+        <div class="container">
+            <h3>Chatbot Live Demo</h3>
+            <div class="chatbot-container">
+                <div id="chat-window">
+                    <div id="chat-log"></div>
+                    <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
+                    <button id="chat-submit" class="btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NLP Pipeline Visualization -->
+    <section id="nlp-pipeline">
+        <div class="container">
+            <h3>NLP Pipeline Overview</h3>
+            <div id="nlpDiagram"></div>
+        </div>
+    </section>
+
+    <!-- Model Architecture Diagram -->
+    <section id="model-architecture">
+        <div class="container">
+            <h3>Chatbot Model Architecture</h3>
+            <div id="architectureDiagram"></div>
+        </div>
+    </section>
+
+    <!-- Performance Metrics Dashboard -->
+    <section id="performance-dashboard">
+        <div class="container">
+            <h3>Chatbot Performance Metrics</h3>
+            <canvas id="performanceMetricsChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <!-- Code Snippets -->
+    <section id="code-snippets">
+        <div class="container">
+            <h3>Key Code Snippets</h3>
+            <pre><code class="language-python">
+// Example: Chatbot Response Function
+def get_response(user_input):
+    tokens = tokenize(user_input)
+    parsed = parse(tokens)
+    intent = recognize_intent(parsed)
+    response = generate_response(intent)
+    return response
+            </code></pre>
+            <!-- Add more code snippets as needed -->
+        </div>
+    </section>
+
+    <!-- Downloadable Code and Documentation -->
+    <section id="download-code">
+        <div class="container">
+            <h3>Access Source Code and Documentation</h3>
+            <div class="download-buttons">
+                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
+                    aria-label="View GitHub Repository">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="docs/chatbot_report.pdf" class="btn" target="_blank" aria-label="Download PDF Report">
+                    <i class="fas fa-file-pdf"></i> Download Report
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demonstration -->
+    <section id="video-demo">
+        <div class="container">
+            <h3>Chatbot Demonstration</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
+                    title="AI-Powered Chatbot Demonstration" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#hero" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </footer>
 
