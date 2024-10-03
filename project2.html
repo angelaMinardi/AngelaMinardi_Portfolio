@@ -16,8 +16,7 @@
     <!-- Meta Tags for SEO -->
     <meta name="description"
         content="Detailed overview of Angela Minardi's Blockchain Implementation project, showcasing key features and technologies used.">
-    <meta name="keywords"
-        content="Angela Minardi, Blockchain, Implementation, Python, Flask, Hashing, Proof of Work">
+    <meta name="keywords" content="Angela Minardi, Blockchain, Implementation, Python, Flask, Hashing, Proof of Work">
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Blockchain Implementation - Angela Minardi">
     <meta property="og:description"
@@ -29,17 +28,16 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Project",
-      "name": "Blockchain Implementation",
-      "description": "Built a simplified blockchain from scratch to understand distributed ledger technology, including proof of work and hashing.",
+      "@type": "WebPage",
+      "name": "Blockchain Implementation - Angela Minardi",
+      "description": "Detailed overview of Angela Minardi's Blockchain Implementation project, showcasing key features and technologies used.",
       "url": "https://yourdomain.com/project2.html",
       "image": "https://yourdomain.com/images/project2.jpg",
       "author": {
         "@type": "Person",
         "name": "Angela Minardi",
         "url": "https://yourdomain.com"
-      },
-      "datePublished": "2024-10-03"
+      }
     }
     </script>
     <!-- Viewport for Responsive Design -->
@@ -119,7 +117,9 @@
         <section id="blockchain-explorer" data-aos="fade-up">
             <div class="container">
                 <h3>Blockchain Explorer</h3>
-                <div id="explorerDiagram"></div>
+                <div id="explorerDiagram" class="diagram-container">
+                    <!-- D3.js will render the blockchain diagram here -->
+                </div>
             </div>
         </section>
 
@@ -129,7 +129,7 @@
                 <h3>Smart Contract Demo</h3>
                 <div class="smart-contract-container">
                     <button id="execute-contract" class="btn">Execute Smart Contract</button>
-                    <div id="contract-output"></div>
+                    <div id="contract-output" aria-live="polite"></div>
                 </div>
             </div>
         </section>
@@ -173,7 +173,9 @@ class Block:
         <section id="blockchain-diagram" data-aos="fade-up">
             <div class="container">
                 <h3>Blockchain Structure</h3>
-                <div id="blockchainDiagram"></div>
+                <div id="blockchainDiagram" class="diagram-container">
+                    <!-- D3.js will render the blockchain structure here -->
+                </div>
             </div>
         </section>
 
@@ -210,25 +212,45 @@ class Block:
         <a href="#hero" class="back-to-top" aria-label="Back to Top">
             <i class="fas fa-chevron-up"></i>
         </a>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <!-- AOS JS for Scroll Animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+        <!-- Prism.js JS for Syntax Highlighting -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" defer></script>
+        <!-- Chart.js Library -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- D3.js Library -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <!-- JavaScript -->
+        <script src="js/script.js" defer></script>
+        <!-- Initialize Diagrams -->
+        <script>
+            // Example D3.js Blockchain Explorer Diagram
+            document.addEventListener("DOMContentLoaded", () => {
+                // Initialize Blockchain Explorer Diagram
+                const explorerDiagram = d3.select("#explorerDiagram");
+                // Add your D3.js code here to visualize the blockchain explorer
+
+                // Initialize Blockchain Structure Diagram
+                const blockchainDiagram = d3.select("#blockchainDiagram");
+                // Add your D3.js code here to visualize the blockchain structure
+            });
+        </script>
     </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <!-- AOS JS for Scroll Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
-    <script src="js/script.js" defer></script>
 </body>
 
 </html>
