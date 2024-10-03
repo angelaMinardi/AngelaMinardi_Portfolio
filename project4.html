@@ -24,7 +24,7 @@
     <meta name="description"
         content="Detailed overview of Angela Minardi's Smart-Insole Technical Design project, showcasing key features and technologies used to predict and prevent falls among geriatric populations.">
     <meta name="keywords"
-        content="Angela Minardi, Smart Insole, Gait Analysis, IoT, ESP32, AWS IoT Core, Machine Learning, XGBoost, Fall Prevention">
+        content="Angela Minardi, Smart Insole, Gait Analysis, Fall Prevention, IoT, Machine Learning, ESP32, AWS IoT Core">
     <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -61,221 +61,441 @@
                     analyze gait patterns and foot pressure distribution in real-time, thereby predicting and preventing
                     potential falls.
                 </p>
-                <h3>Key Features:</h3>
-                <ul>
-                    <li>Real-time gait monitoring using advanced sensors</li>
-                    <li>Predictive analytics to assess fall risk</li>
-                    <li>Secure data transmission to cloud services</li>
-                    <li>Comprehensive user interface with actionable insights</li>
-                    <li>Optimized power management for extended battery life</li>
+                <h3>System Overview</h3>
+                <p>
+                    This smart insole integrates advanced sensors, including a Force Sensitive Resistor (FSR) matrix and
+                    a 9-axis Inertial Measurement Unit (IMU), which work in tandem with a powerful ESP32 microcontroller
+                    to collect and process comprehensive biomechanical data.
+                </p>
+                <h3>Hardware Design</h3>
+                <h4>FSR Matrix Selection and Configuration</h4>
+                <h5>Sensor Selection</h5>
+                <p>
+                    For accurate pressure mapping, I selected thin-film FSRs, specifically the Interlink FSR 402 series,
+                    due to their thin profile (less than 0.5 mm thickness), flexibility, and sensitivity to a wide range of
+                    force (from 0.2 N to 20 N). FSRs provide high spatial resolution for pressure mapping, essential for
+                    detecting subtle changes in plantar pressure distribution associated with gait abnormalities.
+                </p>
+                <h5>Matrix Configuration</h5>
+                <p>
+                    The FSRs are arranged in a grid pattern to form a pressure-sensing matrix. The matrix consists of 4 rows
+                    and 8 columns, yielding a total of 32 sensors strategically placed to cover critical regions of the
+                    foot: Heel, Midfoot, Forefoot, and Toes. This configuration ensures comprehensive coverage and signal
+                    redundancy.
+                </p>
+                <h4>Electrical Circuit Design and Multiplexing</h4>
+                <p>
+                    Each FSR operates as a variable resistor whose resistance decreases with applied force. They are
+                    incorporated into voltage divider circuits to convert resistance changes into voltage signals suitable
+                    for analog-to-digital conversion. An ESP32 microcontroller manages the sensor data acquisition and
+                    multiplexing.
+                </p>
+                <h3>Integration of the Inertial Measurement Unit (IMU)</h3>
+                <h4>Sensor Selection</h4>
+                <p>
+                    We integrate the MPU9250 IMU, which combines a 3-axis accelerometer, a 3-axis gyroscope, and a 3-axis
+                    magnetometer, providing comprehensive 9-axis motion tracking.
+                </p>
+                <h4>Sensor Placement</h4>
+                <p>
+                    The IMU is placed centrally within the insole to align with the foot's center of mass, minimizing rotational
+                    artifacts and ensuring accurate measurement of translational and rotational movements pertinent to gait
+                    analysis.
+                </p>
+                <h3>ESP32 Microcontroller and Connectivity</h3>
+                <h4>Microcontroller Selection</h4>
+                <p>
+                    The ESP32 microcontroller is chosen for its dual-core Tensilica LX6 processors, integrated Wi-Fi (IEEE
+                    802.11 b/g/n), Bluetooth 4.2 (LE) connectivity, and ample GPIO availability.
+                </p>
+                <h4>Interfacing and Pin Configuration</h4>
+                <p>
+                    The FSR matrix interfaces with the ESP32's ADC pins through analog multiplexers, while the IMU communicates
+                    via the I²C bus, utilizing SDA and SCL pins with appropriate pull-up resistors.
+                </p>
+                <h3>Power Supply and Battery Life Estimation</h3>
+                <h4>Power Requirements</h4>
+                <p>
+                    The total current consumption during active operation is estimated to be 83 mA, considering the ESP32
+                    during active Wi-Fi transmission, the IMU, and negligible draw from FSRs.
+                </p>
+                <h4>Battery Selection and Life Calculation</h4>
+                <p>
+                    A 3.7V, 1000 mAh Li-Po battery is selected for its thin form factor and high energy density. With power
+                    management strategies like deep sleep modes and duty cycling, the operational battery life is estimated
+                    to extend to approximately three days under typical usage patterns.
+                </p>
+                <h3>Physical Integration and Insole Design</h3>
+                <h4>Material Selection and Layering</h4>
+                <p>
+                    The insole is constructed using flexible, breathable materials such as ethylene-vinyl acetate (EVA)
+                    foam for cushioning and thermoplastic polyurethane (TPU) for durability. The design comprises multiple
+                    layers to house the sensor matrix, IMU, and ESP32 securely while ensuring user comfort.
+                </p>
+                <h3>Data Acquisition and Synchronization</h3>
+                <h4>Sampling Rates and Synchronization</h4>
+                <p>
+                    The FSR matrix and IMU sensors are sampled at 100 Hz, balancing the need for detailed biomechanical data
+                    with processing power and energy consumption constraints. Timestamping ensures precise temporal
+                    alignment for data fusion.
+                </p>
+                <h4>Data Buffering and Transmission</h4>
+                <p>
+                    Data is buffered using circular buffers on the ESP32 and transmitted in structured JSON packets via MQTT
+                    over TLS to AWS IoT Core for further processing and storage.
+                </p>
+                <h3>Data Processing and Feature Extraction</h3>
+                <h4>Preprocessing and Noise Filtering</h4>
+                <p>
+                    Analog signals from the FSRs and IMU undergo low-pass filtering and normalization to remove noise and
+                    account for sensor drift. Features such as Center of Pressure (CoP), gait cycle segmentation, and temporal
+                    parameters are extracted for analysis.
+                </p>
+                <h4>Time-Series Forecasting with XGBoost</h4>
+                <p>
+                    An XGBoost model is trained to predict fall risk scores based on extracted features. The model is deployed
+                    on AWS SageMaker for scalable and efficient inference.
+                </p>
+                <h3>Model Deployment on AWS</h3>
+                <p>
+                    The trained XGBoost model is deployed as an AWS SageMaker endpoint, enabling real-time fall risk
+                    predictions. Data transmission is secured using MQTT over TLS, ensuring privacy and compliance with
+                    data protection regulations.
+                </p>
+                <h3>User Interface and Fall Risk Presentation</h3>
+                <h4>Smartphone Application Design</h4>
+                <p>
+                    A responsive smartphone application provides users with real-time dashboards, interactive data
+                    visualizations, personalized recommendations, and configurable notifications to monitor their fall risk
+                    and take proactive measures.
+                </p>
+                <h4>Data Interpretation and Feedback</h4>
+                <p>
+                    The application categorizes fall risk scores into low, moderate, and high levels, offering actionable insights
+                    and enabling data sharing with caregivers and clinicians for comprehensive care coordination.
+                </p>
+                <h3>Power Management and Battery Optimization</h3>
+                <h4>Power-Saving Techniques</h4>
+                <p>
+                    Implementing deep sleep modes and duty cycling reduces power consumption, extending battery life while
+                    maintaining essential functionalities.
+                </p>
+                <h4>Battery Life Estimation with Power Management</h4>
+                <p>
+                    Through power management strategies, the smart insole achieves an operational battery life of approximately
+                    three days under typical usage patterns.
+                </p>
+                <h3>Prototype Development and Assembly</h3>
+                <h4>Flexible PCB Design</h4>
+                <p>
+                    The flexible PCB is fabricated using polyimide substrates, ensuring durability and resistance to mechanical
+                    stresses during walking. Components are strategically placed to maintain flexibility and minimize stress,
+                    enhancing the insole's longevity and reliability.
+                </p>
+                <h4>Enclosure and Encapsulation</h4>
+                <p>
+                    Finite Element Analysis (FEA) is conducted to simulate mechanical stresses, ensuring the design withstands
+                    repetitive loading without failure. The IMU and ESP32 are encased within protective, waterproof casings to
+                    safeguard against environmental factors.
+                </p>
+                <h4>Future Studies</h4>
+                <p>
+                    Pilot studies involving elderly participants will assess the system's effectiveness in fall risk prediction,
+                    user acceptance, and adherence rates, providing comprehensive evaluations for further enhancements.
+                </p>
+                <h3>Conclusion</h3>
+                <p>
+                    The Smart-Insole project represents a significant advancement in fall risk assessment technology for older
+                    adults. By integrating high-resolution pressure sensing with comprehensive motion analysis and sophisticated
+                    machine learning algorithms, the system provides accurate, real-time predictions of fall risk, enhancing
+                    the safety and well-being of its users.
+                </p>
+            </div>
+        </section>
+
+        <!-- Data Acquisition and Visualization Section -->
+        <section id="data-acquisition">
+            <div class="container">
+                <h3>Data Acquisition and Visualization</h3>
+                <p>
+                    The smart insole collects real-time data from the FSR matrix and IMU sensors, processes it using the ESP32
+                    microcontroller, and transmits it securely to AWS IoT Core. The collected data is then stored in DynamoDB
+                    and processed using AWS Lambda and SageMaker for predictive analytics. The smartphone application provides
+                    interactive visualizations, enabling users to monitor their gait patterns and fall risk scores.
+                </p>
+                <canvas id="dataChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- Feature Extraction and Machine Learning Section -->
+        <section id="ml-feature-extraction">
+            <div class="container">
+                <h3>Feature Extraction and Machine Learning</h3>
+                <p>
+                    Advanced feature extraction techniques are applied to the sensor data to derive meaningful metrics such as
+                    Center of Pressure (CoP), gait cycle segmentation, stride length, and postural stability measures. These
+                    features are then used to train an XGBoost model to predict fall risk scores accurately.
+                </p>
+                <pre><code class="language-python">
+# Sample Feature Extraction Code
+import pandas as pd
+import numpy as np
+
+def extract_features(data):
+    features = {}
+    
+    # Calculate mean and std of FSR sensors
+    fsr_columns = [f'fsr_{i}' for i in range(32)]
+    features['fsr_mean'] = data[fsr_columns].mean().mean()
+    features['fsr_std'] = data[fsr_columns].std().mean()
+    
+    # Calculate Center of Pressure (CoP)
+    x_coords = np.linspace(0, 1, 8)  # Example coordinates
+    y_coords = np.linspace(0, 1, 4)
+    X, Y = np.meshgrid(x_coords, y_coords)
+    X = X.flatten()
+    Y = Y.flatten()
+    pressures = data[fsr_columns].values.flatten()
+    total_pressure = pressures.sum()
+    features['CoP_x'] = (X * pressures).sum() / total_pressure
+    features['CoP_y'] = (Y * pressures).sum() / total_pressure
+    
+    # IMU features
+    imu_columns = ['imu_accel_x', 'imu_accel_y', 'imu_accel_z',
+                  'imu_gyro_x', 'imu_gyro_y', 'imu_gyro_z',
+                  'imu_mag_x', 'imu_mag_y', 'imu_mag_z']
+    imu_data = data[imu_columns]
+    features['imu_mean'] = imu_data.mean().mean()
+    features['imu_std'] = imu_data.std().mean()
+    
+    return features
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Code Snippets Section -->
+        <section id="code-snippets">
+            <div class="container">
+                <h3>Key Code Snippets</h3>
+                <pre><code class="language-cpp">
+// Sample ESP32 Firmware Code
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <Adafruit_MPU9250.h>
+#include <Wire.h>
+#include <ArduinoJson.h>
+
+// Wi-Fi credentials
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
+
+// AWS IoT Core MQTT Broker
+const char* mqtt_server = "YOUR_AWS_IOT_ENDPOINT";
+
+// MQTT Topics
+const char* publish_topic = "smart_insole/data";
+
+// FSR Matrix Configuration
+const int muxControlPins[4] = {5, 18, 19, 21}; // S0, S1, S2, S3
+const int fsrChannels = 32;
+const int fsrMax = 4095; // 12-bit ADC
+
+// Reference resistor value
+const float Rref = 10000.0;
+
+// Initialize Wi-Fi and MQTT Client
+WiFiClientSecure espClient;
+PubSubClient client(espClient);
+
+// Initialize MPU9250
+Adafruit_MPU9250 mpu;
+
+// Function to set multiplexer channels
+void setMuxChannel(int channel) {
+  for (int i = 0; i < 4; i++) {
+    digitalWrite(muxControlPins[i], (channel >> i) & 0x01);
+  }
+}
+
+// Function to read FSR Matrix
+float readFSR(int channel) {
+  setMuxChannel(channel);
+  delay(10); // Allow mux to settle
+  int sensorValue = analogRead(34); // ADC Pin
+  // Convert sensor value to force (simplified)
+  float voltage = (sensorValue / (float)fsrMax) * 3.3;
+  float resistance = (Rref * (3.3 - voltage)) / voltage;
+  // FSR response can be calibrated; here we return resistance
+  return resistance;
+}
+
+// Function to connect to Wi-Fi
+void setup_wifi() {
+  delay(10);
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+// Function to reconnect to MQTT
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect
+    if (client.connect("ESP32Client")) {
+      Serial.println("connected");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  // Initialize MUX control pins
+  for (int i = 0; i < 4; i++) {
+    pinMode(muxControlPins[i], OUTPUT);
+    digitalWrite(muxControlPins[i], LOW);
+  }
+
+  // Initialize ADC pin
+  analogReadResolution(12); // 12-bit ADC
+
+  // Initialize MPU9250
+  if (!mpu.begin()) {
+    Serial.println("Failed to find MPU9250 chip");
+    while (1) {
+      delay(10);
+    }
+  }
+  mpu.setAccelRange(MPU9250_RANGE_8_G);
+  mpu.setGyroRange(MPU9250_RANGE_500_DEG);
+  mpu.setMagRange(MPU9250_RANGE_4_Ga);
+  mpu.setFilterBandwidth(MPU9250_BAND_21_HZ);
+
+  // Connect to Wi-Fi
+  setup_wifi();
+
+  // Configure MQTT
+  client.setServer(mqtt_server, 8883);
+
+  // Load AWS certificate
+  // Replace with your certificate details
+  espClient.setCACert(AWS_CERT_CA);
+  espClient.setCertificate(AWS_CERT_CRT);
+  espClient.setPrivateKey(AWS_CERT_PRIVATE);
+}
+
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  // Read FSR data
+  JsonObject root;
+  StaticJsonDocument<1024> doc;
+  root = doc.to<JsonObject>();
+
+  for (int i = 0; i < fsrChannels; i++) {
+    float resistance = readFSR(i);
+    root["fsr"][i] = resistance;
+  }
+
+  // Read IMU data
+  sensors_event_t a, g, m;
+  mpu.getEvent(&a, &g, &m);
+
+  root["imu"]["accel_x"] = a.acceleration.x;
+  root["imu"]["accel_y"] = a.acceleration.y;
+  root["imu"]["accel_z"] = a.acceleration.z;
+
+  root["imu"]["gyro_x"] = g.gyro.x;
+  root["imu"]["gyro_y"] = g.gyro.y;
+  root["imu"]["gyro_z"] = g.gyro.z;
+
+  root["imu"]["mag_x"] = m.magnetic.x;
+  root["imu"]["mag_y"] = m.magnetic.y;
+  root["imu"]["mag_z"] = m.magnetic.z;
+
+  // Serialize JSON
+  char jsonBuffer[2048];
+  serializeJson(doc, jsonBuffer);
+
+  // Publish to MQTT
+  client.publish(publish_topic, jsonBuffer);
+
+  Serial.println(jsonBuffer);
+
+  // Delay between readings
+  delay(1000); // 1 second
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Prototype Demonstration Section -->
+        <section id="prototype-demo">
+            <div class="container">
+                <h3>Prototype Demonstration</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
+                        title="Smart-Insole Technical Design Demo" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloadable Reports Section -->
+        <section id="download-reports">
+            <div class="container">
+                <h3>Download Project Reports</h3>
+                <div class="download-buttons">
+                    <a href="reports/smart-insole-data.csv" class="btn" download aria-label="Download CSV Data">
+                        <i class="fas fa-file-csv"></i> Download CSV Data
+                    </a>
+                    <a href="reports/smart-insole-report.pdf" class="btn" target="_blank" aria-label="Download PDF Report">
+                        <i class="fas fa-file-pdf"></i> Download PDF Report
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Top Button -->
+        <a href="#hero" class="back-to-top" aria-label="Back to Top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
-                <h3>Technologies Used:</h3>
-                <ul>
-                    <li>Hardware: ESP32, Force Sensitive Resistors (FSRs), MPU9250 IMU</li>
-                    <li>Firmware: C++ (Arduino framework)</li>
-                    <li>Cloud Services: AWS IoT Core, AWS SageMaker</li>
-                    <li>Machine Learning: XGBoost</li>
-                    <li>Frontend: React Native (Smartphone Application)</li>
-                    <li>Protocols: MQTT over TLS</li>
-                </ul>
-                <a href="https://github.com/yourgithub/smart-insole" class="btn" target="_blank" aria-label="View Code on GitHub">
-                    <i class="fab fa-github"></i> View Code on GitHub
-                </a>
             </div>
-        </div>
-    </section>
+        </footer>
 
-    <!-- Technical Design Sections -->
-    <section id="technical-design">
-        <div class="container">
-            <h3>Technical Design</h3>
-            <div class="technical-content">
-                <!-- System Overview -->
-                <div class="technical-section">
-                    <h4>System Overview</h4>
-                    <p>
-                        The Smart-Insole integrates advanced sensors, including a Force Sensitive Resistor (FSR) matrix and a
-                        9-axis Inertial Measurement Unit (IMU), which work in tandem with a powerful ESP32 microcontroller
-                        to collect and process comprehensive biomechanical data.
-                    </p>
-                    <img src="images/system_overview.jpg" alt="System Overview Diagram" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- Hardware Design -->
-                <div class="technical-section">
-                    <h4>Hardware Design</h4>
-                    <h5>FSR Matrix Selection and Configuration</h5>
-                    <p>
-                        Selected thin-film FSRs (Interlink FSR 402 series) for accurate pressure mapping, arranged in a 4x8
-                        grid to cover critical regions of the foot: Heel, Midfoot, Forefoot, and Toes.
-                    </p>
-                    <img src="images/fsr_matrix.jpg" alt="FSR Matrix Configuration" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- Electrical Circuit Design -->
-                <div class="technical-section">
-                    <h5>Electrical Circuit Design and Multiplexing</h5>
-                    <p>
-                        Each FSR is incorporated into a voltage divider circuit to convert resistance changes into voltage
-                        signals suitable for analog-to-digital conversion. Utilized analog multiplexers to efficiently
-                        manage multiple sensor inputs.
-                    </p>
-                    <img src="images/electrical_circuit.jpg" alt="Electrical Circuit Design" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- IMU Integration -->
-                <div class="technical-section">
-                    <h5>Integration of the Inertial Measurement Unit (IMU)</h5>
-                    <p>
-                        Integrated the MPU9250 IMU for comprehensive 9-axis motion tracking, centrally placed within the
-                        insole to minimize rotational artifacts and ensure accurate measurement of gait dynamics.
-                    </p>
-                    <img src="images/imu_integration.jpg" alt="IMU Integration" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- Microcontroller and Connectivity -->
-                <div class="technical-section">
-                    <h5>ESP32 Microcontroller and Connectivity</h5>
-                    <p>
-                        The ESP32 microcontroller facilitates data collection, processing, and secure transmission to AWS
-                        IoT Core via MQTT over TLS, ensuring real-time analytics and fall risk prediction.
-                    </p>
-                    <img src="images/esp32_setup.jpg" alt="ESP32 Setup" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- Power Management -->
-                <div class="technical-section">
-                    <h5>Power Supply and Battery Life Estimation</h5>
-                    <p>
-                        Implemented power management strategies, including deep sleep modes and duty cycling, to extend
-                        battery life to approximately three days under typical usage patterns.
-                    </p>
-                    <img src="images/power_management.jpg" alt="Power Management Diagram" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- Data Acquisition and Processing -->
-                <div class="technical-section">
-                    <h4>Data Acquisition and Processing</h4>
-                    <h5>Sampling Rates and Synchronization</h5>
-                    <p>
-                        Configured uniform sampling rates for FSR and IMU sensors at 100 Hz to facilitate synchronized
-                        data fusion and accurate gait analysis.
-                    </p>
-                    <h5>Feature Extraction</h5>
-                    <p>
-                        Extracted critical gait parameters such as Center of Pressure (CoP), stride length, and postural
-                        stability measures. Employed XGBoost for predictive analytics to assess fall risk based on these
-                        features.
-                    </p>
-                    <img src="images/data_processing.jpg" alt="Data Processing Flow" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- Cloud Integration -->
-                <div class="technical-section">
-                    <h4>Cloud Integration and Security</h4>
-                    <p>
-                        Utilized AWS IoT Core for secure device connectivity and data ingestion. Deployed the XGBoost model
-                        on AWS SageMaker for scalable and efficient fall risk prediction. Ensured data security and compliance
-                        with HIPAA and GDPR through encryption and robust access controls.
-                    </p>
-                    <img src="images/cloud_integration.jpg" alt="Cloud Integration Diagram" class="detail-img" loading="lazy">
-                </div>
-
-                <!-- User Interface -->
-                <div class="technical-section">
-                    <h4>User Interface and Feedback</h4>
-                    <p>
-                        Developed a responsive smartphone application using React Native, providing users with real-time
-                        fall risk scores, historical data visualizations, and personalized recommendations. Incorporated
-                        accessibility features to ensure usability across diverse user populations.
-                    </p>
-                    <img src="images/user_interface.jpg" alt="User Interface Screenshot" class="detail-img" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Prototype Development and Testing -->
-    <section id="prototype-testing">
-        <div class="container">
-            <h3>Prototype Development and Testing</h3>
-            <div class="prototype-content">
-                <div class="prototype-section">
-                    <h4>Physical Integration and Insole Design</h4>
-                    <p>
-                        Constructed the insole using flexible, breathable materials such as EVA foam and TPU for durability.
-                        Employed finite element analysis (FEA) to simulate mechanical stresses and optimize component placement
-                        for longevity and user comfort.
-                    </p>
-                    <img src="images/physical_integration.jpg" alt="Physical Integration" class="detail-img" loading="lazy">
-                </div>
-
-                <div class="prototype-section">
-                    <h4>Model Deployment on AWS</h4>
-                    <p>
-                        Deployed the XGBoost model on AWS SageMaker endpoints, enabling real-time inference based on incoming
-                        sensor data. Implemented secure MQTT communication to ensure data integrity and privacy during transmission.
-                    </p>
-                    <img src="images/model_deployment.jpg" alt="Model Deployment" class="detail-img" loading="lazy">
-                </div>
-
-                <div class="prototype-section">
-                    <h4>User Testing and Feedback</h4>
-                    <p>
-                        Conducted pilot studies with elderly participants to evaluate system performance, user acceptance, and
-                        adherence rates. Gathered feedback to refine the user interface and enhance overall system usability.
-                    </p>
-                    <img src="images/user_testing.jpg" alt="User Testing" class="detail-img" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conclusion -->
-    <section id="conclusion">
-        <div class="container">
-            <h3>Conclusion</h3>
-            <p>
-                The Smart-Insole project represents a significant advancement in fall risk assessment technology for older
-                adults. By integrating high-resolution pressure sensing with comprehensive motion analysis and sophisticated
-                machine learning algorithms, the system provides accurate, real-time predictions of fall risk. The design
-                choices are meticulously justified based on technical merits, user needs, and practical considerations,
-                ensuring the device is effective and user-friendly.
-            </p>
-        </div>
-    </section>
-
-    <!-- Images Section -->
-    <section id="images">
-        <div class="container">
-            <h3>Project Images</h3>
-            <div class="images-gallery">
-                <img src="images/project4_image1.jpg" alt="Smart Insole Prototype" loading="lazy">
-                <img src="images/project4_image2.jpg" alt="Data Visualization Dashboard" loading="lazy">
-                <img src="images/project4_image3.jpg" alt="User Interface Design" loading="lazy">
-            </div>
-        </div>
-    </section>
-
-    <!-- Back to Top Button -->
-    <a href="#hero" class="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
-</body>
+        <!-- JavaScript -->
+        <script src="js/script.js"></script>
+    </body>
 
 </html>
