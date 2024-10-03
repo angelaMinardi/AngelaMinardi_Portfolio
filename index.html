@@ -97,7 +97,7 @@
                 <h2>About Me</h2>
                 <div class="about-content">
                     <img src="images/profile.jpg" alt="Professional photo of Angela Minardi" class="profile-img"
-                        loading="lazy">
+                        loading="lazy" data-aos="zoom-in">
                     <div class="about-text">
                         <p>
                             I'm Angela Minardi, a dedicated computer scientist with a strong background in networking,
@@ -186,7 +186,7 @@
                         </p>
                     </div>
                     <!-- Project 2 -->
-                    <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="project-img">
                             <img src="images/project2.jpg" alt="Blockchain Implementation" loading="lazy">
                             <div class="overlay">
@@ -200,7 +200,7 @@
                         </p>
                     </div>
                     <!-- Project 3 -->
-                    <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="400">
                         <div class="project-img">
                             <img src="images/project3.jpg" alt="AI-Powered Chatbot" loading="lazy">
                             <div class="overlay">
@@ -222,14 +222,45 @@
             <div class="container">
                 <h2>Testimonials</h2>
                 <div class="testimonials-content">
-                    <div class="testimonial-item">
-                        <p>"Angela is a highly skilled computer scientist with a keen eye for detail."</p>
+                    <div class="testimonial-item" data-aos="fade-up">
+                        <p>"Angela is a highly skilled computer scientist with a keen eye for detail. Her work on the 5G simulation project was exceptional."</p>
                         <h4>- John Doe, CEO of TechCorp</h4>
                     </div>
-                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                        <p>"Her work on blockchain implementation was exceptional and insightful."</p>
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                        <p>"Her blockchain implementation project demonstrated a deep understanding of distributed systems and cryptography."</p>
                         <h4>- Jane Smith, Lead Developer at InnovateX</h4>
                     </div>
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                        <p>"Angela's AI-powered chatbot is both intelligent and user-friendly. It's a testament to her expertise in machine learning and NLP."</p>
+                        <h4>- Mike Johnson, Product Manager at AI Solutions</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section (Optional) -->
+        <section id="blog" data-aos="fade-up">
+            <div class="container">
+                <h2>Blog</h2>
+                <div class="blog-content">
+                    <article class="blog-post" data-aos="fade-up">
+                        <img src="images/blog1.jpg" alt="Understanding 5G Networks" loading="lazy">
+                        <h3><a href="blog/post1.html">Understanding 5G Networks</a></h3>
+                        <p>A comprehensive guide to the architecture and benefits of 5G wireless networks.</p>
+                        <a href="blog/post1.html" class="btn">Read More</a>
+                    </article>
+                    <article class="blog-post" data-aos="fade-up" data-aos-delay="200">
+                        <img src="images/blog2.jpg" alt="Blockchain Fundamentals" loading="lazy">
+                        <h3><a href="blog/post2.html">Blockchain Fundamentals</a></h3>
+                        <p>Exploring the core principles that make blockchain technology secure and decentralized.</p>
+                        <a href="blog/post2.html" class="btn">Read More</a>
+                    </article>
+                    <article class="blog-post" data-aos="fade-up" data-aos-delay="400">
+                        <img src="images/blog3.jpg" alt="Building an AI Chatbot" loading="lazy">
+                        <h3><a href="blog/post3.html">Building an AI Chatbot</a></h3>
+                        <p>A step-by-step tutorial on creating an AI-powered chatbot using Python and TensorFlow.</p>
+                        <a href="blog/post3.html" class="btn">Read More</a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -256,8 +287,8 @@
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
-                    <!-- Contact Form -->
-                    <form action="https://formspree.io/f/yourformid" method="POST">
+                    <!-- Optional: Contact Form -->
+                    <form action="https://formspree.io/f/yourformid" method="POST" data-aos="fade-up">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="_replyto" placeholder="Your Email" required>
                         <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -266,23 +297,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Blog Section (Optional) -->
-        <!-- Uncomment and populate as needed
-        <section id="blog" data-aos="fade-up">
-            <div class="container">
-                <h2>Blog</h2>
-                <div class="blog-content">
-                    <article class="blog-post">
-                        <img src="images/blog1.jpg" alt="Blog Post Image" loading="lazy">
-                        <h3><a href="blog/post1.html">Understanding 5G Networks</a></h3>
-                        <p>A comprehensive guide to the architecture and benefits of 5G wireless networks.</p>
-                        <a href="blog/post1.html" class="btn">Read More</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-        -->
 
         <!-- Back to Top Button -->
         <a href="#hero" class="back-to-top" aria-label="Back to Top">
@@ -298,56 +312,19 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#blog">Blog</a></li>
                 </ul>
             </div>
         </footer>
 
         <!-- JavaScript -->
         <!-- AOS JS for Scroll Animations -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <!-- LazySizes for Lazy Loading Images (Optional Enhancement) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
         <!-- Prism.js JS for Syntax Highlighting -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-        <!-- Chart.js Library -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <!-- D3.js Library -->
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-        <!-- jsPDF Library -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <!-- Google Analytics (Replace with your Tracking ID) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-XXXXXXXXX-X');
-        </script>
-        <!-- Service Worker Registration for PWA -->
-        <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js')
-                        .then(registration => {
-                            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                        }, err => {
-                            console.log('ServiceWorker registration failed: ', err);
-                        });
-                });
-            }
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" defer></script>
         <!-- Main JavaScript -->
         <script src="js/script.js" defer></script>
-        <script>
-            // Initialize AOS
-            AOS.init({
-                duration: 1000,
-                once: true,
-            });
-        </script>
-    </main>
-</body>
+    </body>
 
-</html>
+    </html>
