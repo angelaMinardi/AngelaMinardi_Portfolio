@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -11,118 +11,157 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Prism.js CSS for Syntax Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <!-- jsPDF Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- D3.js Library -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- Prism.js JS for Syntax Highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- AOS CSS for Scroll Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <!-- Meta Tags for SEO -->
     <meta name="description"
         content="Detailed overview of Angela Minardi's AI-Powered Chatbot project, showcasing key features and technologies used.">
     <meta name="keywords" content="Angela Minardi, AI Chatbot, Machine Learning, NLP, Python, TensorFlow, Flask">
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="AI-Powered Chatbot - Angela Minardi">
+    <meta property="og:description"
+        content="Explore Angela Minardi's AI-Powered Chatbot project, highlighting key features and technologies used.">
+    <meta property="og:image" content="images/project3.jpg">
+    <meta property="og:url" content="https://yourdomain.com/project3.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI-Powered Chatbot - Angela Minardi",
+      "description": "Detailed overview of Angela Minardi's AI-Powered Chatbot project, showcasing key features and technologies used.",
+      "url": "https://yourdomain.com/project3.html",
+      "image": "https://yourdomain.com/images/project3.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Angela Minardi",
+        "url": "https://yourdomain.com"
+      }
+    }
+    </script>
     <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Web App Manifest for PWA -->
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+
     <!-- Navigation Bar -->
-    <nav>
-        <div class="container">
-            <a href="index.html" class="logo">Angela Minardi</a>
-            <div class="nav-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html#hero">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#skills">Skills</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Project Detail Section -->
-    <section id="project-detail">
-        <div class="container">
-            <h2>AI-Powered Chatbot</h2>
-            <div class="project-detail-content">
-                <img src="images/project3.jpg" alt="AI-Powered Chatbot" class="detail-img" loading="lazy">
-                <p>
-                    I developed a chatbot that uses machine learning techniques to understand and respond to user inputs
-                    in a conversational manner. The chatbot serves as a personal assistant, capable of answering
-                    questions and performing simple tasks.
-                </p>
-                <h3>Key Features:</h3>
-                <ul>
-                    <li>Natural Language Processing using NLTK and spaCy</li>
-                    <li>Machine learning models developed with TensorFlow</li>
-                    <li>Integrated with a web-based user interface</li>
-                    <li>Supports multiple languages and intents</li>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">Angela Minardi</a>
+                <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html#hero">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
-                <h3>Technologies Used:</h3>
-                <ul>
-                    <li>Python programming language</li>
-                    <li>TensorFlow and Keras for machine learning</li>
-                    <li>Flask for web framework</li>
-                    <li>JavaScript for frontend interactivity</li>
-                </ul>
-                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
-                    aria-label="View Code on GitHub">
-                    <i class="fab fa-github"></i> View Code on GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Chatbot Demo -->
-    <section id="chatbot-demo">
-        <div class="container">
-            <h3>Chatbot Live Demo</h3>
-            <div class="chatbot-container">
-                <div id="chat-window">
-                    <div id="chat-log"></div>
-                    <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
-                    <button id="chat-submit" class="btn">Send</button>
+                <!-- Dark Mode Toggle -->
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" aria-label="Toggle Dark Mode">
+                    <label for="theme-switch">🌙</label>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <!-- NLP Pipeline Visualization -->
-    <section id="nlp-pipeline">
-        <div class="container">
-            <h3>NLP Pipeline Overview</h3>
-            <div id="nlpDiagram"></div>
-        </div>
-    </section>
+    <!-- Project Detail Section -->
+    <main>
+        <section id="project-detail" data-aos="fade-up">
+            <div class="container">
+                <h2>AI-Powered Chatbot</h2>
+                <div class="project-detail-content">
+                    <img src="images/project3.jpg" alt="AI-Powered Chatbot" class="detail-img" loading="lazy">
+                    <p>
+                        I developed a chatbot that uses machine learning techniques to understand and respond to user inputs
+                        in a conversational manner. The chatbot serves as a personal assistant, capable of answering
+                        questions and performing simple tasks.
+                    </p>
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li>Natural Language Processing using NLTK and spaCy</li>
+                        <li>Machine learning models developed with TensorFlow</li>
+                        <li>Integrated with a web-based user interface</li>
+                        <li>Supports multiple languages and intents</li>
+                    </ul>
+                    <h3>Technologies Used:</h3>
+                    <ul>
+                        <li>Python programming language</li>
+                        <li>TensorFlow and Keras for machine learning</li>
+                        <li>Flask for web framework</li>
+                        <li>JavaScript for frontend interactivity</li>
+                    </ul>
+                    <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
+                        aria-label="View Code on GitHub">
+                        <i class="fab fa-github"></i> View Code on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Model Architecture Diagram -->
-    <section id="model-architecture">
-        <div class="container">
-            <h3>Chatbot Model Architecture</h3>
-            <div id="architectureDiagram"></div>
-        </div>
-    </section>
+        <!-- Live Chatbot Demo -->
+        <section id="chatbot-demo" data-aos="fade-up">
+            <div class="container">
+                <h3>Chatbot Live Demo</h3>
+                <div class="chatbot-container">
+                    <div id="chat-window" role="dialog" aria-labelledby="chat-title" aria-modal="true">
+                        <div id="chat-log" tabindex="0"></div>
+                        <div class="chat-input-container">
+                            <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off" aria-label="Chatbot input">
+                            <button id="chat-submit" class="btn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Performance Metrics Dashboard -->
-    <section id="performance-dashboard">
-        <div class="container">
-            <h3>Chatbot Performance Metrics</h3>
-            <canvas id="performanceMetricsChart" width="400" height="200"></canvas>
-        </div>
-    </section>
+        <!-- NLP Pipeline Visualization -->
+        <section id="nlp-pipeline" data-aos="fade-up">
+            <div class="container">
+                <h3>NLP Pipeline Overview</h3>
+                <div id="nlpDiagram" class="diagram-container">
+                    <!-- D3.js will render the NLP pipeline diagram here -->
+                </div>
+            </div>
+        </section>
 
-    <!-- Code Snippets -->
-    <section id="code-snippets">
-        <div class="container">
-            <h3>Key Code Snippets</h3>
-            <pre><code class="language-python">
+        <!-- Model Architecture Diagram -->
+        <section id="model-architecture" data-aos="fade-up">
+            <div class="container">
+                <h3>Chatbot Model Architecture</h3>
+                <div id="architectureDiagram" class="diagram-container">
+                    <!-- D3.js will render the model architecture diagram here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics Dashboard -->
+        <section id="performance-dashboard" data-aos="fade-up">
+            <div class="container">
+                <h3>Chatbot Performance Metrics</h3>
+                <canvas id="performanceMetricsChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- Code Snippets -->
+        <section id="code-snippets" data-aos="fade-up">
+            <div class="container">
+                <h3>Key Code Snippets</h3>
+                <pre><code class="language-python">
 // Example: Chatbot Response Function
 def get_response(user_input):
     tokens = tokenize(user_input)
@@ -130,59 +169,113 @@ def get_response(user_input):
     intent = recognize_intent(parsed)
     response = generate_response(intent)
     return response
-            </code></pre>
-            <!-- Add more code snippets as needed -->
-        </div>
-    </section>
-
-    <!-- Downloadable Code and Documentation -->
-    <section id="download-code">
-        <div class="container">
-            <h3>Access Source Code and Documentation</h3>
-            <div class="download-buttons">
-                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
-                    aria-label="View GitHub Repository">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-                <a href="docs/chatbot_report.pdf" class="btn" target="_blank" aria-label="Download PDF Report">
-                    <i class="fas fa-file-pdf"></i> Download Report
-                </a>
+                </code></pre>
+                <!-- Add more code snippets as needed -->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Video Demonstration -->
-    <section id="video-demo">
-        <div class="container">
-            <h3>Chatbot Demonstration</h3>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
-                    title="AI-Powered Chatbot Demonstration" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+        <!-- Downloadable Code and Documentation -->
+        <section id="download-code" data-aos="fade-up">
+            <div class="container">
+                <h3>Access Source Code and Documentation</h3>
+                <div class="download-buttons">
+                    <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
+                        aria-label="View GitHub Repository">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                    <a href="docs/chatbot_report.pdf" class="btn" target="_blank" aria-label="Download PDF Report">
+                        <i class="fas fa-file-pdf"></i> Download Report
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Back to Top Button -->
-    <a href="#hero" class="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
+        <!-- Video Demonstration -->
+        <section id="video-demo" data-aos="fade-up">
+            <div class="container">
+                <h3>Chatbot Demonstration</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
+                        title="AI-Powered Chatbot Demonstration" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
+        <!-- Back to Top Button -->
+        <a href="#hero" class="back-to-top" aria-label="Back to Top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <!-- AOS JS for Scroll Animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+        <!-- Prism.js JS for Syntax Highlighting -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" defer></script>
+        <!-- Chart.js Library -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- D3.js Library -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <!-- JavaScript -->
+        <script src="js/script.js" defer></script>
+        <!-- Initialize Diagrams and Charts -->
+        <script>
+            // Example D3.js NLP Pipeline Diagram
+            document.addEventListener("DOMContentLoaded", () => {
+                // Initialize NLP Pipeline Diagram
+                const nlpDiagram = d3.select("#nlpDiagram");
+                // Add your D3.js code here to visualize the NLP pipeline
+
+                // Initialize Model Architecture Diagram
+                const architectureDiagram = d3.select("#architectureDiagram");
+                // Add your D3.js code here to visualize the chatbot model architecture
+
+                // Initialize Performance Metrics Chart
+                const ctx = document.getElementById('performanceMetricsChart').getContext('2d');
+                const performanceMetricsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Accuracy', 'Response Time', 'User Satisfaction'],
+                        datasets: [{
+                            label: 'Performance Metrics',
+                            data: [85, 1.2, 90],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.6)',
+                                'rgba(153, 102, 255, 0.6)',
+                                'rgba(255, 159, 64, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+            });
+        </script>
+    </main>
 </body>
 
 </html>
