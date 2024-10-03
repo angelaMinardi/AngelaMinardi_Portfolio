@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Smart-Insole Technical Design - Angela Minardi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Prism.js JS for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Detailed overview of Angela Minardi's Smart-Insole Technical Design project, showcasing key features and technologies used to predict and prevent falls among geriatric populations.">
+    <meta name="keywords"
+        content="Angela Minardi, Smart Insole, Gait Analysis, IoT, ESP32, AWS IoT Core, Machine Learning, XGBoost, Fall Prevention">
+    <!-- Viewport for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Angela Minardi</a>
+            <div class="nav-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Detail Section -->
+    <section id="project-detail">
+        <div class="container">
+            <h2>Smart-Insole Technical Design</h2>
+            <div class="project-detail-content">
+                <img src="images/project4.jpg" alt="Smart-Insole Technical Design" class="detail-img" loading="lazy">
+                <p>
+                    Falls among geriatric populations represent a significant public health challenge, leading to serious
+                    injuries, increased mortality rates, and substantial economic burdens on healthcare systems and
+                    families. To address this critical issue, I have developed an innovative smart insole to monitor and
+                    analyze gait patterns and foot pressure distribution in real-time, thereby predicting and preventing
+                    potential falls.
+                </p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Real-time gait monitoring using advanced sensors</li>
+                    <li>Predictive analytics to assess fall risk</li>
+                    <li>Secure data transmission to cloud services</li>
+                    <li>Comprehensive user interface with actionable insights</li>
+                    <li>Optimized power management for extended battery life</li>
+                </ul>
+                <h3>Technologies Used:</h3>
+                <ul>
+                    <li>Hardware: ESP32, Force Sensitive Resistors (FSRs), MPU9250 IMU</li>
+                    <li>Firmware: C++ (Arduino framework)</li>
+                    <li>Cloud Services: AWS IoT Core, AWS SageMaker</li>
+                    <li>Machine Learning: XGBoost</li>
+                    <li>Frontend: React Native (Smartphone Application)</li>
+                    <li>Protocols: MQTT over TLS</li>
+                </ul>
+                <a href="https://github.com/yourgithub/smart-insole" class="btn" target="_blank" aria-label="View Code on GitHub">
+                    <i class="fab fa-github"></i> View Code on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Design Sections -->
+    <section id="technical-design">
+        <div class="container">
+            <h3>Technical Design</h3>
+            <div class="technical-content">
+                <!-- System Overview -->
+                <div class="technical-section">
+                    <h4>System Overview</h4>
+                    <p>
+                        The Smart-Insole integrates advanced sensors, including a Force Sensitive Resistor (FSR) matrix and a
+                        9-axis Inertial Measurement Unit (IMU), which work in tandem with a powerful ESP32 microcontroller
+                        to collect and process comprehensive biomechanical data.
+                    </p>
+                    <img src="images/system_overview.jpg" alt="System Overview Diagram" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- Hardware Design -->
+                <div class="technical-section">
+                    <h4>Hardware Design</h4>
+                    <h5>FSR Matrix Selection and Configuration</h5>
+                    <p>
+                        Selected thin-film FSRs (Interlink FSR 402 series) for accurate pressure mapping, arranged in a 4x8
+                        grid to cover critical regions of the foot: Heel, Midfoot, Forefoot, and Toes.
+                    </p>
+                    <img src="images/fsr_matrix.jpg" alt="FSR Matrix Configuration" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- Electrical Circuit Design -->
+                <div class="technical-section">
+                    <h5>Electrical Circuit Design and Multiplexing</h5>
+                    <p>
+                        Each FSR is incorporated into a voltage divider circuit to convert resistance changes into voltage
+                        signals suitable for analog-to-digital conversion. Utilized analog multiplexers to efficiently
+                        manage multiple sensor inputs.
+                    </p>
+                    <img src="images/electrical_circuit.jpg" alt="Electrical Circuit Design" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- IMU Integration -->
+                <div class="technical-section">
+                    <h5>Integration of the Inertial Measurement Unit (IMU)</h5>
+                    <p>
+                        Integrated the MPU9250 IMU for comprehensive 9-axis motion tracking, centrally placed within the
+                        insole to minimize rotational artifacts and ensure accurate measurement of gait dynamics.
+                    </p>
+                    <img src="images/imu_integration.jpg" alt="IMU Integration" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- Microcontroller and Connectivity -->
+                <div class="technical-section">
+                    <h5>ESP32 Microcontroller and Connectivity</h5>
+                    <p>
+                        The ESP32 microcontroller facilitates data collection, processing, and secure transmission to AWS
+                        IoT Core via MQTT over TLS, ensuring real-time analytics and fall risk prediction.
+                    </p>
+                    <img src="images/esp32_setup.jpg" alt="ESP32 Setup" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- Power Management -->
+                <div class="technical-section">
+                    <h5>Power Supply and Battery Life Estimation</h5>
+                    <p>
+                        Implemented power management strategies, including deep sleep modes and duty cycling, to extend
+                        battery life to approximately three days under typical usage patterns.
+                    </p>
+                    <img src="images/power_management.jpg" alt="Power Management Diagram" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- Data Acquisition and Processing -->
+                <div class="technical-section">
+                    <h4>Data Acquisition and Processing</h4>
+                    <h5>Sampling Rates and Synchronization</h5>
+                    <p>
+                        Configured uniform sampling rates for FSR and IMU sensors at 100 Hz to facilitate synchronized
+                        data fusion and accurate gait analysis.
+                    </p>
+                    <h5>Feature Extraction</h5>
+                    <p>
+                        Extracted critical gait parameters such as Center of Pressure (CoP), stride length, and postural
+                        stability measures. Employed XGBoost for predictive analytics to assess fall risk based on these
+                        features.
+                    </p>
+                    <img src="images/data_processing.jpg" alt="Data Processing Flow" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- Cloud Integration -->
+                <div class="technical-section">
+                    <h4>Cloud Integration and Security</h4>
+                    <p>
+                        Utilized AWS IoT Core for secure device connectivity and data ingestion. Deployed the XGBoost model
+                        on AWS SageMaker for scalable and efficient fall risk prediction. Ensured data security and compliance
+                        with HIPAA and GDPR through encryption and robust access controls.
+                    </p>
+                    <img src="images/cloud_integration.jpg" alt="Cloud Integration Diagram" class="detail-img" loading="lazy">
+                </div>
+
+                <!-- User Interface -->
+                <div class="technical-section">
+                    <h4>User Interface and Feedback</h4>
+                    <p>
+                        Developed a responsive smartphone application using React Native, providing users with real-time
+                        fall risk scores, historical data visualizations, and personalized recommendations. Incorporated
+                        accessibility features to ensure usability across diverse user populations.
+                    </p>
+                    <img src="images/user_interface.jpg" alt="User Interface Screenshot" class="detail-img" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prototype Development and Testing -->
+    <section id="prototype-testing">
+        <div class="container">
+            <h3>Prototype Development and Testing</h3>
+            <div class="prototype-content">
+                <div class="prototype-section">
+                    <h4>Physical Integration and Insole Design</h4>
+                    <p>
+                        Constructed the insole using flexible, breathable materials such as EVA foam and TPU for durability.
+                        Employed finite element analysis (FEA) to simulate mechanical stresses and optimize component placement
+                        for longevity and user comfort.
+                    </p>
+                    <img src="images/physical_integration.jpg" alt="Physical Integration" class="detail-img" loading="lazy">
+                </div>
+
+                <div class="prototype-section">
+                    <h4>Model Deployment on AWS</h4>
+                    <p>
+                        Deployed the XGBoost model on AWS SageMaker endpoints, enabling real-time inference based on incoming
+                        sensor data. Implemented secure MQTT communication to ensure data integrity and privacy during transmission.
+                    </p>
+                    <img src="images/model_deployment.jpg" alt="Model Deployment" class="detail-img" loading="lazy">
+                </div>
+
+                <div class="prototype-section">
+                    <h4>User Testing and Feedback</h4>
+                    <p>
+                        Conducted pilot studies with elderly participants to evaluate system performance, user acceptance, and
+                        adherence rates. Gathered feedback to refine the user interface and enhance overall system usability.
+                    </p>
+                    <img src="images/user_testing.jpg" alt="User Testing" class="detail-img" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conclusion">
+        <div class="container">
+            <h3>Conclusion</h3>
+            <p>
+                The Smart-Insole project represents a significant advancement in fall risk assessment technology for older
+                adults. By integrating high-resolution pressure sensing with comprehensive motion analysis and sophisticated
+                machine learning algorithms, the system provides accurate, real-time predictions of fall risk. The design
+                choices are meticulously justified based on technical merits, user needs, and practical considerations,
+                ensuring the device is effective and user-friendly.
+            </p>
+        </div>
+    </section>
+
+    <!-- Images Section -->
+    <section id="images">
+        <div class="container">
+            <h3>Project Images</h3>
+            <div class="images-gallery">
+                <img src="images/project4_image1.jpg" alt="Smart Insole Prototype" loading="lazy">
+                <img src="images/project4_image2.jpg" alt="Data Visualization Dashboard" loading="lazy">
+                <img src="images/project4_image3.jpg" alt="User Interface Design" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#hero" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
