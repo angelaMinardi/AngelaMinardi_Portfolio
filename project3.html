@@ -22,8 +22,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <!-- Meta Tags for SEO -->
     <meta name="description"
-        content="Detailed overview of Angela Minardi's AI-Powered Chatbot project, showcasing key features and technologies used.">
-    <meta name="keywords" content="Angela Minardi, AI Chatbot, Machine Learning, NLP, Python, TensorFlow, Flask">
+        content="Detailed overview of Angela Minardi's AI-Powered Chatbot project, including technical documentation and live demo.">
+    <meta name="keywords" content="Angela Minardi, AI Chatbot, Machine Learning, NLP, Python, TensorFlow, Technical Writing">
     <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -58,6 +58,10 @@
                     in a conversational manner. The chatbot serves as a personal assistant, capable of answering
                     questions and performing simple tasks.
                 </p>
+                <p>
+                    I documented the development process extensively, including the model architecture, training procedures,
+                    and deployment strategies. This documentation serves as a guide for future improvements and for other developers.
+                </p>
                 <h3>Key Features:</h3>
                 <ul>
                     <li>Natural Language Processing using NLTK and spaCy</li>
@@ -67,12 +71,16 @@
                 </ul>
                 <h3>Technologies Used:</h3>
                 <ul>
-                    <li>Python programming language</li>
+                    <li>Python Programming Language</li>
                     <li>TensorFlow and Keras for machine learning</li>
                     <li>Flask for web framework</li>
                     <li>JavaScript for frontend interactivity</li>
                 </ul>
-                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
+                <h3>Technical Documentation:</h3>
+                <ul>
+                    <li><a href="docs/chatbot_development_report.pdf" target="_blank">Download Development Report (PDF)</a></li>
+                </ul>
+                <a href="https://github.com/angelaminardi/ai-chatbot" class="btn" target="_blank"
                     aria-label="View Code on GitHub">
                     <i class="fab fa-github"></i> View Code on GitHub
                 </a>
@@ -94,73 +102,26 @@
         </div>
     </section>
 
-    <!-- NLP Pipeline Visualization -->
-    <section id="nlp-pipeline">
-        <div class="container">
-            <h3>NLP Pipeline Overview</h3>
-            <div id="nlpDiagram"></div>
-        </div>
-    </section>
-
-    <!-- Model Architecture Diagram -->
-    <section id="model-architecture">
-        <div class="container">
-            <h3>Chatbot Model Architecture</h3>
-            <div id="architectureDiagram"></div>
-        </div>
-    </section>
-
-    <!-- Performance Metrics Dashboard -->
-    <section id="performance-dashboard">
-        <div class="container">
-            <h3>Chatbot Performance Metrics</h3>
-            <canvas id="performanceMetricsChart" width="400" height="200"></canvas>
-        </div>
-    </section>
-
-    <!-- Code Snippets -->
+    <!-- Code Snippets Section -->
     <section id="code-snippets">
         <div class="container">
             <h3>Key Code Snippets</h3>
             <pre><code class="language-python">
-// Example: Chatbot Response Function
+# Example: Chatbot Response Function
 def get_response(user_input):
-    tokens = tokenize(user_input)
-    parsed = parse(tokens)
-    intent = recognize_intent(parsed)
-    response = generate_response(intent)
+    intents = predict_class(user_input)
+    result = get_intent_response(intents)
+    return result
+
+def predict_class(sentence):
+    # Tokenize and preprocess input
+    # Predict intent using the trained model
+    return intents
+
+def get_intent_response(intents):
+    # Match the predicted intent with responses
     return response
             </code></pre>
-            <!-- Add more code snippets as needed -->
-        </div>
-    </section>
-
-    <!-- Downloadable Code and Documentation -->
-    <section id="download-code">
-        <div class="container">
-            <h3>Access Source Code and Documentation</h3>
-            <div class="download-buttons">
-                <a href="https://github.com/yourgithub/ai-chatbot" class="btn" target="_blank"
-                    aria-label="View GitHub Repository">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-                <a href="docs/chatbot_report.pdf" class="btn" target="_blank" aria-label="Download PDF Report">
-                    <i class="fas fa-file-pdf"></i> Download Report
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Demonstration -->
-    <section id="video-demo">
-        <div class="container">
-            <h3>Chatbot Demonstration</h3>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID"
-                    title="AI-Powered Chatbot Demonstration" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
         </div>
     </section>
 
@@ -174,9 +135,9 @@ def get_response(user_input):
         <div class="container">
             <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </footer>
