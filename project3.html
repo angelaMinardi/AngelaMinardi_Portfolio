@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>AI-Powered Chatbot - Angela Minardi</title>
+    <title>Smart Insole Technical Design - Angela Minardi</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
@@ -11,19 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Prism.js CSS for Syntax Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <!-- jsPDF Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- D3.js Library -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- Prism.js JS for Syntax Highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <!-- Meta Tags for SEO -->
     <meta name="description"
-        content="Detailed overview of Angela Minardi's AI-Powered Chatbot project, including technical documentation and live demo.">
-    <meta name="keywords" content="Angela Minardi, AI Chatbot, Machine Learning, NLP, Python, TensorFlow, Technical Writing">
+        content="Detailed overview of the Smart Insole Technical Design project, including technical documentation and design specifications.">
+    <meta name="keywords"
+        content="Angela Minardi, Smart Insole, Technical Writing, Embedded Systems, ESP32, Technical Documentation">
     <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -50,37 +44,38 @@
     <!-- Project Detail Section -->
     <section id="project-detail">
         <div class="container">
-            <h2>AI-Powered Chatbot</h2>
+            <h2>Smart Insole Technical Design</h2>
             <div class="project-detail-content">
-                <img src="images/project3.jpg" alt="AI-Powered Chatbot" class="detail-img" loading="lazy">
+                <img src="images/project4.jpg" alt="Smart Insole Technical Design" class="detail-img" loading="lazy">
                 <p>
-                    I developed a chatbot that uses machine learning techniques to understand and respond to user inputs
-                    in a conversational manner. The chatbot serves as a personal assistant, capable of answering
-                    questions and performing simple tasks.
+                    In this project, I developed an intelligent smart insole using ESP32 microcontrollers, force-sensing resistors,
+                    and inertial measurement units (IMUs) to monitor gait patterns and foot pressure distribution in real-time.
                 </p>
                 <p>
-                    I documented the development process extensively, including the model architecture, training procedures,
-                    and deployment strategies. This documentation serves as a guide for future improvements and for other developers.
+                    I produced detailed technical documentation, including design specifications, circuit diagrams, firmware documentation,
+                    and user manuals. The documentation aimed to make the complex technical aspects accessible to both technical and non-technical stakeholders.
                 </p>
                 <h3>Key Features:</h3>
                 <ul>
-                    <li>Natural Language Processing using NLTK and spaCy</li>
-                    <li>Machine learning models developed with TensorFlow</li>
-                    <li>Integrated with a web-based user interface</li>
-                    <li>Supports multiple languages and intents</li>
+                    <li>Real-time gait analysis and fall prevention mechanisms</li>
+                    <li>Data transmission using MQTT protocol</li>
+                    <li>Integration with AWS for data processing and storage</li>
+                    <li>Comprehensive technical documentation and user guides</li>
                 </ul>
                 <h3>Technologies Used:</h3>
                 <ul>
-                    <li>Python Programming Language</li>
-                    <li>TensorFlow and Keras for machine learning</li>
-                    <li>Flask for web framework</li>
-                    <li>JavaScript for frontend interactivity</li>
+                    <li>ESP32 Microcontroller</li>
+                    <li>C++ and Arduino IDE for firmware development</li>
+                    <li>MQTT Protocol for data transmission</li>
+                    <li>AWS IoT Core and AWS Lambda</li>
+                    <li>Markdown and LaTeX for documentation</li>
                 </ul>
                 <h3>Technical Documentation:</h3>
                 <ul>
-                    <li><a href="docs/chatbot_development_report.pdf" target="_blank">Download Development Report (PDF)</a></li>
+                    <li><a href="docs/smart_insole_design_spec.pdf" target="_blank">Download Design Specification (PDF)</a></li>
+                    <li><a href="docs/smart_insole_user_manual.pdf" target="_blank">Download User Manual (PDF)</a></li>
                 </ul>
-                <a href="https://github.com/angelaminardi/ai-chatbot" class="btn" target="_blank"
+                <a href="https://github.com/angelaminardi/smart-insole" class="btn" target="_blank"
                     aria-label="View Code on GitHub">
                     <i class="fab fa-github"></i> View Code on GitHub
                 </a>
@@ -88,17 +83,11 @@
         </div>
     </section>
 
-    <!-- Live Chatbot Demo -->
-    <section id="chatbot-demo">
+    <!-- Insole Design Diagram Section -->
+    <section id="insole-diagram">
         <div class="container">
-            <h3>Chatbot Live Demo</h3>
-            <div class="chatbot-container">
-                <div id="chat-window">
-                    <div id="chat-log"></div>
-                    <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
-                    <button id="chat-submit" class="btn">Send</button>
-                </div>
-            </div>
+            <h3>Smart Insole Design Diagram</h3>
+            <div id="insoleDiagram"></div>
         </div>
     </section>
 
@@ -106,24 +95,43 @@
     <section id="code-snippets">
         <div class="container">
             <h3>Key Code Snippets</h3>
-            <pre><code class="language-python">
-# Example: Chatbot Response Function
-def get_response(user_input):
-    intents = predict_class(user_input)
-    result = get_intent_response(intents)
-    return result
+            <pre><code class="language-cpp">
+    // Example: Reading Sensor Data and Publishing via MQTT
+    #include <WiFi.h>
+    #include <PubSubClient.h>
+    
+    const char* ssid = "your_SSID";
+    const char* password = "your_PASSWORD";
+    const char* mqtt_server = "your_mqtt_broker";
 
-def predict_class(sentence):
-    # Tokenize and preprocess input
-    # Predict intent using the trained model
-    return intents
+    WiFiClient espClient;
+    PubSubClient client(espClient);
 
-def get_intent_response(intents):
-    # Match the predicted intent with responses
-    return response
-            </code></pre>
-        </div>
-    </section>
+    void setup() {
+      Serial.begin(115200);
+      setup_wifi();
+      client.setServer(mqtt_server, 1883);
+    }
+
+    void loop() {
+      if (!client.connected()) {
+        reconnect();
+      }
+      client.loop();
+
+      // Read sensor data
+      float pressure = analogRead(A0);
+      float acceleration = readIMU();
+
+      // Publish data
+      String payload = "{\"pressure\":" + String(pressure) + ",\"acceleration\":" + String(acceleration) + "}";
+      client.publish("insole/data", payload.c_str());
+
+      delay(100);
+    }
+                </code></pre>
+            </div>
+        </section>
 
     <!-- Back to Top Button -->
     <a href="#hero" class="back-to-top" aria-label="Back to Top">
@@ -144,6 +152,11 @@ def get_intent_response(intents):
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
+    <!-- Custom JavaScript for Project3 -->
+    <script>
+        // Smart Insole Design Diagram using D3.js
+        // (Placeholder for actual D3.js code to render the design diagram)
+    </script>
 </body>
 
 </html>
