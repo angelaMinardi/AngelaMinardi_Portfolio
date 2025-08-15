@@ -1,191 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>5G Wireless Network Simulation - Angela Minardi</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Prism.js CSS for Syntax Highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <!-- Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Prism.js JS for Syntax Highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <!-- Meta Tags for SEO -->
-    <meta name="description"
-        content="Detailed overview of 5G Wireless Network Simulation project, including technical documentation and analysis.">
-    <meta name="keywords"
-        content="Angela Minardi, 5G Simulation, Technical Writing, NS-3, Network Analysis, Technical Documentation">
-    <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrack - Patient Management System Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Sidebar */
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-right: 1px solid var(--border);
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .nav-item.active {
+            background: #eff6ff;
+            color: var(--primary);
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: #64748b;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-change.positive {
+            color: var(--secondary);
+        }
+
+        .stat-change.negative {
+            color: var(--danger);
+        }
+
+        /* Tables */
+        .data-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            width: 300px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            background: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: var(--light);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-scheduled {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-cancelled {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Action Buttons */
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: var(--border);
+            color: var(--dark);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-icon:hover {
+            background: var(--light);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        /* Calendar View */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .calendar-day {
+            background: white;
+            padding: 0.5rem;
+            min-height: 100px;
+        }
+
+        .calendar-day-header {
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+            background: var(--light);
+        }
+
+        .calendar-date {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .calendar-event {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Demo Banner */
+        .demo-banner {
+            background: linear-gradient(135deg, var(--warning), #f59e0b);
+            color: white;
+            padding: 0.75rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="container">
-            <a href="index.html" class="logo">Angela Minardi</a>
-            <div class="nav-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html#hero">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#skills">Skills</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🎭 DEMO MODE - This is a demonstration of the MediTrack system interface
+    </div>
 
-    <!-- Project Detail Section -->
-    <section id="project-detail">
-        <div class="container">
-            <h2>5G Wireless Network Simulation</h2>
-            <div class="project-detail-content">
-                <img src="images/project1.jpg" alt="5G Wireless Network Simulation" class="detail-img" loading="lazy">
-                <p>
-                    This project involves the development of a simulation tool using NS-3 to model and analyze 5G wireless networks.
-                    The focus was on key performance indicators such as throughput, latency, and packet loss.
-                </p>
-                <p>
-                    I authored comprehensive technical documentation, including user manuals and technical reports,
-                    to facilitate understanding and usage of the simulation tool by other researchers and professionals.
-                </p>
-                <h3>Key Features:</h3>
-                <ul>
-                    <li>Simulated 5G network scenarios with varying parameters</li>
-                    <li>Analyzed network performance metrics</li>
-                    <li>Developed user guides and technical documentation</li>
-                    <li>Collaborated with a team to validate simulation results</li>
-                </ul>
-                <h3>Technologies Used:</h3>
-                <ul>
-                    <li>NS-3 Network Simulator</li>
-                    <li>C++ Programming Language</li>
-                    <li>Gnuplot for data visualization</li>
-                    <li>Markdown and LaTeX for documentation</li>
-                </ul>
-                <h3>Technical Documentation:</h3>
-                <ul>
-                    <li><a href="docs/5g_simulation_report.pdf" target="_blank">Download Technical Report (PDF)</a></li>
-                    <li><a href="docs/5g_user_guide.pdf" target="_blank">Download User Guide (PDF)</a></li>
-                </ul>
-                <a href="https://github.com/angelaminardi/5g-simulation" class="btn" target="_blank"
-                    aria-label="View Code on GitHub">
-                    <i class="fab fa-github"></i> View Code on GitHub
-                </a>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span>💊</span>
+                <span>MediTrack</span>
+            </div>
+            <div class="user-info">
+                <span>Dr. Sarah Johnson</span>
+                <div class="user-avatar">SJ</div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Simulation Results Section -->
-    <section id="simulation-results">
-        <div class="container">
-            <h3>Simulation Results</h3>
-            <canvas id="throughputChart" width="400" height="200" aria-label="Throughput Chart" role="img"></canvas>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a class="nav-item active" onclick="showPage('dashboard')">
+                <span>📊</span> Dashboard
+            </a>
+            <a class="nav-item" onclick="showPage('patients')">
+                <span>👥</span> Patients
+            </a>
+            <a class="nav-item" onclick="showPage('appointments')">
+                <span>📅</span> Appointments
+            </a>
+            <a class="nav-item" onclick="showPage('medications')">
+                <span>💊</span> Medications
+            </a>
+            <a class="nav-item" onclick="showPage('records')">
+                <span>📁</span> Medical Records
+            </a>
+            <a class="nav-item" onclick="showPage('analytics')">
+                <span>📈</span> Analytics
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page">
+                <div class="page-header">
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Welcome back, Dr. Johnson. Here's today's overview.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Patients</div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-change positive">↑ 12% from last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Today's Appointments</div>
+                        <div class="stat-value">18</div>
+                        <div class="stat-change">3 pending confirmations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Pending Prescriptions</div>
+                        <div class="stat-value">7</div>
+                        <div class="stat-change negative">↑ 2 urgent refills</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Avg Wait Time</div>
+                        <div class="stat-value">12 min</div>
+                        <div class="stat-change positive">↓ 3 min improvement</div>
+                    </div>
+                </div>
+
+                <div class="data-table">
+                    <div class="table-header">
+                        <h2>Recent Appointments</h2>
+                        <button class="btn btn-primary" onclick="showNewAppointmentModal()">New Appointment</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Patient</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9:00 AM</td>
+                                <td>John Smith</td>
+                                <td>Regular Checkup</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10:30 AM</td>
+                                <td>Maria Garcia</td>
+                                <td>Follow-up</td>
+                                <td><span class="status-badge status-scheduled">Scheduled</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2:00 PM</td>
+                                <td>Robert Johnson</td>
+                                <td>Consultation</td>
+                                <td><span class="status-badge status-scheduled">Scheduled</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Patients Page -->
+            <div id="patients-page" class="page" style="display:none;">
+                <div class="page-header">
+                    <h1 class="page-title">Patient Management</h1>
+                    <p class="page-subtitle">Manage patient records and information</p>
+                </div>
+
+                <div class="data-table">
+                    <div class="table-header">
+                        <input type="text" class="search-box" placeholder="Search patients...">
+                        <button class="btn btn-primary" onclick="showNewPatientModal()">Add Patient</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Phone</th>
+                                <th>Last Visit</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#P1001</td>
+                                <td>John Smith</td>
+                                <td>45</td>
+                                <td>(301) 555-0123</td>
+                                <td>2024-01-15</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewPatientDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                        <button class="btn-icon">📋</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#P1002</td>
+                                <td>Maria Garcia</td>
+                                <td>32</td>
+                                <td>(301) 555-0124</td>
+                                <td>2024-01-10</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewPatientDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                        <button class="btn-icon">📋</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#P1003</td>
+                                <td>Robert Johnson</td>
+                                <td>58</td>
+                                <td>(301) 555-0125</td>
+                                <td>2024-01-08</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewPatientDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                        <button class="btn-icon">📋</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#P1004</td>
+                                <td>Emily Davis</td>
+                                <td>28</td>
+                                <td>(301) 555-0126</td>
+                                <td>2024-01-05</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" onclick="viewPatientDetails()">👁️</button>
+                                        <button class="btn-icon">📝</button>
+                                        <button class="btn-icon">📋</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Appointments Page -->
+            <div id="appointments-page" class="page" style="display:none;">
+                <div class="page-header">
+                    <h1 class="page-title">Appointment Calendar</h1>
+                    <p class="page-subtitle">Manage and schedule appointments</p>
+                </div>
+
+                <div class="data-table">
+                    <div class="calendar-header">
+                        <button class="btn btn-secondary">← Previous</button>
+                        <h2>January 2024</h2>
+                        <button class="btn btn-secondary">Next →</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                        
+                        <div class="calendar-day">
+                            <div class="calendar-date">1</div>
+                            <div class="calendar-event">9:00 AM - J. Smith</div>
+                            <div class="calendar-event">2:00 PM - M. Garcia</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-date">2</div>
+                            <div class="calendar-event">10:00 AM - R. Johnson</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-date">3</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-date">4</div>
+                            <div class="calendar-event">11:00 AM - E. Davis</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-date">5</div>
+                            <div class="calendar-event">9:00 AM - Team Meeting</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-date">6</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-date">7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medications Page -->
+            <div id="medications-page" class="page" style="display:none;">
+                <div class="page-header">
+                    <h1 class="page-title">Medication Management</h1>
+                    <p class="page-subtitle">Track prescriptions and refills</p>
+                </div>
+
+                <div class="data-table">
+                    <div class="table-header">
+                        <input type="text" class="search-box" placeholder="Search medications...">
+                        <button class="btn btn-primary" onclick="showNewPrescriptionModal()">New Prescription</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Patient</th>
+                                <th>Medication</th>
+                                <th>Dosage</th>
+                                <th>Frequency</th>
+                                <th>Refills</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>Lisinopril</td>
+                                <td>10mg</td>
+                                <td>Once daily</td>
+                                <td>2 remaining</td>
+                                <td><span class="status-badge status-scheduled">Active</span></td>
+                                <td>
+                                    <button class="btn-icon">🔄</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Maria Garcia</td>
+                                <td>Metformin</td>
+                                <td>500mg</td>
+                                <td>Twice daily</td>
+                                <td>0 remaining</td>
+                                <td><span class="status-badge status-cancelled">Needs Refill</span></td>
+                                <td>
+                                    <button class="btn-icon">🔄</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Robert Johnson</td>
+                                <td>Atorvastatin</td>
+                                <td>20mg</td>
+                                <td>Once daily</td>
+                                <td>5 remaining</td>
+                                <td><span class="status-badge status-scheduled">Active</span></td>
+                                <td>
+                                    <button class="btn-icon">🔄</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Appointment</h2>
+                <button onclick="closeModal('appointment-modal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Patient</label>
+                    <select class="form-select">
+                        <option>Select a patient...</option>
+                        <option>John Smith</option>
+                        <option>Maria Garcia</option>
+                        <option>Robert Johnson</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Type</label>
+                    <select class="form-select">
+                        <option>Regular Checkup</option>
+                        <option>Follow-up</option>
+                        <option>Consultation</option>
+                        <option>Emergency</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Notes</label>
+                    <textarea class="form-input" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('appointment-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="saveAppointment()">Schedule Appointment</button>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Code Snippets Section -->
-    <section id="code-snippets">
-        <div class="container">
-            <h3>Key Code Snippets</h3>
-            <pre><code class="language-cpp">
-// Example: Setting up the simulation environment
-#include "ns3/core-module.h"
-#include "ns3/network-module.h"
-#include "ns3/mobility-module.h"
-#include "ns3/point-to-point-module.h"
-
-using namespace ns3;
-
-int main(int argc, char *argv[]) {
-    NodeContainer ueNodes;
-    ueNodes.Create(2);
-
-    MobilityHelper mobility;
-    mobility.SetMobilityModel("ns3::ConstantPositionMobilityModel");
-    mobility.Install(ueNodes);
-
-    // Further simulation setup...
-    Simulator::Run();
-    Simulator::Destroy();
-    return 0;
-}
-            </code></pre>
+    <div id="patient-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Patient</h2>
+                <button onclick="closeModal('patient-modal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Insurance Provider</label>
+                    <input type="text" class="form-input">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('patient-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="savePatient()">Add Patient</button>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Back to Top Button -->
-    <a href="#hero" class="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
-    <!-- Custom JavaScript for Project1 -->
     <script>
-        // Simulation Results Chart
-        const ctx = document.getElementById('throughputChart').getContext('2d');
-        const throughputChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Scenario 1', 'Scenario 2', 'Scenario 3', 'Scenario 4'],
-                datasets: [{
-                    label: 'Throughput (Mbps)',
-                    data: [50, 75, 60, 80],
-                    backgroundColor: 'rgba(232, 73, 29, 0.2)',
-                    borderColor: 'rgba(232, 73, 29, 1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Throughput Across Different Scenarios'
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Simulation Scenarios'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Throughput (Mbps)'
-                        },
-                        beginAtZero: true
-                    }
-                }
+        // Page Navigation
+        function showPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+            
+            // Show selected page
+            document.getElementById(page + '-page').style.display = 'block';
+            
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
+        }
+
+        // Modal Functions
+        function showNewAppointmentModal() {
+            document.getElementById('appointment-modal').classList.add('active');
+        }
+
+        function showNewPatientModal() {
+            document.getElementById('patient-modal').classList.add('active');
+        }
+
+        function showNewPrescriptionModal() {
+            alert('New Prescription Modal - Feature coming soon!');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function saveAppointment() {
+            alert('Appointment scheduled successfully!');
+            closeModal('appointment-modal');
+        }
+
+        function savePatient() {
+            alert('Patient added successfully!');
+            closeModal('patient-modal');
+        }
+
+        function viewDetails() {
+            alert('Viewing appointment details - Full feature in production version');
+        }
+
+        function viewPatientDetails() {
+            alert('Patient detail view - includes full medical history, allergies, and treatment plans in production version');
+        }
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const timeElement = document.querySelector('.stat-value');
+            if (timeElement && Math.random() > 0.8) {
+                const currentValue = parseInt(timeElement.textContent);
+                timeElement.textContent = currentValue + Math.floor(Math.random() * 3) - 1;
+            }
+        }, 5000);
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'n') {
+                e.preventDefault();
+                showNewAppointmentModal();
             }
         });
-    </script>
-</body>
-
-</html>
