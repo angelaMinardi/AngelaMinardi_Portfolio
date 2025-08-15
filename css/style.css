@@ -331,4 +331,35 @@
     }
 }
 
-@media (max-width: 480px
+@media (max-width: 480px) {
+    .skill-items {
+        justify-content: center;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+    
+    .experience-item {
+        padding: 20px;
+    }
+    
+    .cert-item {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+}
