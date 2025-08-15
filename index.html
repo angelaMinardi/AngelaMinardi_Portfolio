@@ -1,102 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Angela Minardi - Computer Science Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Prism.js CSS for Syntax Highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <!-- jsPDF Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- D3.js Library -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- Prism.js JS for Syntax Highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <!-- Meta Tags for SEO -->
-    <meta name="description"
-        content="Angela Minardi's professional portfolio showcasing expertise in Computer Science, Network Engineering, IoT Development, and Technical Documentation.">
-    <meta name="keywords" content="Angela Minardi, Computer Science, Network Engineering, IoT Developer, AWS, CCNA, Technical Portfolio">
-    <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+    <title>Angela Minardi - Software Engineer | Healthcare IT Specialist</title>
+    <meta name="description" content="Angela Minardi - Computer Science graduate specializing in Healthcare IT, Software Engineering, and Project Management. Experienced in full-stack development, healthcare systems, and IoT solutions.">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #475569;
+            --border: #e2e8f0;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .skills-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-company {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .experience-date {
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .experience-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-list li::before {
+            content: "▸";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #e0e7ff;
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#hero" class="logo">Angela Minardi</a>
-            <div class="nav-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </div>
+            <a href="#home" class="logo">Angela Minardi</a>
             <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero">
+    <section id="home" class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Angela Minardi</h1>
-                <p>Computer Science Student | Network Specialist | IoT Developer</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="docs/Angela_Minardi_Resume.pdf" class="btn btn-outline" target="_blank">Download Resume</a>
-                </div>
+            <h1>Angela Minardi</h1>
+            <div class="subtitle">Software Engineer | Healthcare IT Specialist</div>
+            <div class="tagline">Bridging Technology and Healthcare Through Innovative Solutions</div>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
         </div>
     </section>
 
-    <!-- About Me Section -->
+    <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2>About Me</h2>
+            <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <img src="images/profile.jpg" alt="Professional photo of Angela Minardi" class="profile-img"
-                    loading="lazy">
+                <div class="about-image">
+                    AM
+                </div>
                 <div class="about-text">
+                    <h3>Passionate About Healthcare Technology</h3>
                     <p>
-                        I'm a dedicated Computer Science student at Western Governors University with a passion for network engineering, 
-                        IoT development, and creating innovative solutions to real-world problems. My expertise spans from designing 
-                        enterprise-grade network infrastructures to developing cutting-edge IoT applications.
+                        I'm a Computer Science graduate from Western Governors University with a unique blend of technical expertise and healthcare experience. 
+                        My journey combines hands-on caregiving experience with cutting-edge technology development, positioning me perfectly for roles in Healthcare IT, 
+                        Software Engineering, and Technical Project Management.
                     </p>
                     <p>
-                        Currently pursuing my CCNA certification, I bring hands-on experience in network optimization, having improved 
-                        data throughput by 15% in complex multi-device environments. My work with AWS cloud platforms and embedded 
-                        systems like ESP32 demonstrates my ability to bridge hardware and software solutions effectively.
+                        Through my experience as a family caregiver for elderly grandparents while completing my degree, I developed deep insights into healthcare 
+                        workflows, patient care coordination, and the critical need for efficient healthcare technology solutions. This real-world healthcare exposure, 
+                        combined with my technical skills, enables me to build solutions that truly address healthcare challenges.
                     </p>
                     <p>
-                        I excel at translating complex technical concepts into clear, actionable documentation, making me a valuable 
-                        asset for teams that need both technical expertise and strong communication skills. My goal is to contribute 
-                        to innovative projects that leverage emerging technologies to solve meaningful challenges.
+                        I specialize in developing full-stack applications, healthcare data management systems, and IoT medical devices. Currently pursuing 
+                        CCNA certification to strengthen my network infrastructure knowledge for enterprise healthcare systems.
                     </p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <h3>3+</h3>
-                            <p>Years Programming</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>5+</h3>
-                            <p>Technical Projects</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>15%</h3>
-                            <p>Network Performance Improvement</p>
-                        </div>
+                    <div class="skills-highlight">
+                        <span class="skill-tag">Healthcare IT</span>
+                        <span class="skill-tag">Full-Stack Development</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">IoT Medical Devices</span>
+                        <span class="skill-tag">Data Management</span>
                     </div>
                 </div>
             </div>
@@ -106,80 +494,39 @@
     <!-- Experience Section -->
     <section id="experience">
         <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="experience-content">
-                <div class="experience-item">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
                     <div class="experience-header">
-                        <h3>Computer Science Student</h3>
-                        <span class="date">2023 - Present</span>
+                        <div>
+                            <div class="experience-title">Family Healthcare Coordinator & Caregiver</div>
+                            <div class="experience-company">Private Family Care</div>
+                        </div>
+                        <span class="experience-date">2021 - 2024</span>
                     </div>
-                    <h4>Western Governors University</h4>
-                    <ul>
-                        <li>Maintaining strong academic performance while pursuing Bachelor's in Computer Science</li>
-                        <li>Completed coursework in Object-Oriented Programming, Data Structures, and Network Security</li>
-                        <li>Applied theoretical knowledge to practical projects including IoT development and network optimization</li>
+                    <ul class="experience-list">
+                        <li>Managed complex medication schedules and healthcare appointments for multiple elderly family members while pursuing Computer Science degree</li>
+                        <li>Coordinated with healthcare providers, insurance companies, and medical facilities to ensure continuity of care</li>
+                        <li>Developed organizational systems for tracking medical records, prescriptions, and treatment plans</li>
+                        <li>Demonstrated exceptional time management by balancing caregiving responsibilities with full-time academic coursework</li>
+                        <li>Gained firsthand experience with healthcare workflows, HIPAA compliance, and patient care coordination</li>
                     </ul>
                 </div>
-                <div class="experience-item">
+                
+                <div class="experience-card">
                     <div class="experience-header">
-                        <h3>English Tutor</h3>
-                        <span class="date">2022 - Present</span>
+                        <div>
+                            <div class="experience-title">English Tutor</div>
+                            <div class="experience-company">Ignite Reading</div>
+                        </div>
+                        <span class="experience-date">2022 - Present</span>
                     </div>
-                    <h4>Ignite Reading</h4>
-                    <ul>
-                        <li>Conducted personalized online tutoring sessions, improving student reading comprehension through structured lesson plans</li>
-                        <li>Utilized digital tools and adaptive teaching strategies to enhance student engagement and learning outcomes</li>
-                        <li>Demonstrated effective remote communication and problem-solving skills in educational technology environment</li>
+                    <ul class="experience-list">
+                        <li>Conducted personalized online tutoring sessions using digital education platforms</li>
+                        <li>Developed adaptive teaching strategies to accommodate diverse learning needs</li>
+                        <li>Utilized data-driven approaches to track student progress and optimize learning outcomes</li>
+                        <li>Demonstrated strong communication skills and ability to explain complex concepts clearly</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-content">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">SQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-network-wired"></i> Networking & Infrastructure</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">TCP/IP</span>
-                        <span class="skill-tag">CCNA (In Progress)</span>
-                        <span class="skill-tag">VLANs</span>
-                        <span class="skill-tag">Wireshark</span>
-                        <span class="skill-tag">Network Troubleshooting</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & IoT</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">AWS IoT Core</span>
-                        <span class="skill-tag">Azure IoT Hub</span>
-                        <span class="skill-tag">ESP32</span>
-                        <span class="skill-tag">MQTT</span>
-                        <span class="skill-tag">Embedded Systems</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Oracle SQL</span>
-                        <span class="skill-tag">Arduino IDE</span>
-                        <span class="skill-tag">Technical Writing</span>
-                        <span class="skill-tag">Project Management</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -188,94 +535,134 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-content">
-                <!-- Project 1 -->
-                <div class="project-item">
-                    <div class="project-img">
-                        <img src="images/project4.jpg" alt="Fall Prevention Smart Insole" loading="lazy">
-                        <div class="overlay">
-                            <a href="project3.html" class="project-link">View Details</a>
-                        </div>
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: Healthcare Management System -->
+                <div class="project-card">
+                    <div class="project-image">
+                        💊
                     </div>
                     <div class="project-content">
-                        <h3><a href="project3.html">Fall Prevention Smart Insole</a></h3>
+                        <h3 class="project-title">MediTrack - Patient Management System</h3>
+                        <p>Full-stack healthcare application for managing patient records, appointments, and medication schedules. Features HIPAA-compliant data encryption and role-based access control.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">FHIR API</span>
+                            <span class="tech-tag">JWT Auth</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Smart Insole -->
+                <div class="project-card">
+                    <div class="project-image">
+                        👟
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Fall Prevention Smart Insole</h3>
+                        <p>IoT medical device using ESP32 and ML for real-time gait analysis and fall risk prediction. Integrates with healthcare provider dashboards for remote patient monitoring.</p>
                         <div class="project-tech">
                             <span class="tech-tag">ESP32</span>
-                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">AWS IoT</span>
+                            <span class="tech-tag">Python ML</span>
                             <span class="tech-tag">MQTT</span>
-                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">React Dashboard</span>
                         </div>
-                        <p>
-                            Engineered an IoT-enabled smart insole using ESP32 microcontrollers and force sensors for real-time gait analysis. 
-                            Implemented cloud-based machine learning for fall risk prediction with potential life-saving applications for elderly populations.
-                        </p>
-                        <div class="project-highlights">
-                            <ul>
-                                <li>Real-time gait pattern analysis</li>
-                                <li>AWS cloud integration for scalable processing</li>
-                                <li>MQTT protocol for efficient data transmission</li>
-                            </ul>
+                        <div class="project-links">
+                            <a href="#" class="project-link">📊 Case Study</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="project-item">
-                    <div class="project-img">
-                        <img src="images/project1.jpg" alt="Home Network Optimization" loading="lazy">
-                        <div class="overlay">
-                            <a href="project1.html" class="project-link">View Details</a>
-                        </div>
+
+                <!-- Project 3: Appointment Scheduler -->
+                <div class="project-card">
+                    <div class="project-image">
+                        📅
                     </div>
                     <div class="project-content">
-                        <h3><a href="project1.html">Enterprise Home Network Optimization</a></h3>
+                        <h3 class="project-title">SmartSchedule - Medical Appointment System</h3>
+                        <p>Automated appointment scheduling system with SMS reminders, waitlist management, and integration with electronic health records (EHR) systems.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">VLANs</span>
-                            <span class="tech-tag">Wireshark</span>
-                            <span class="tech-tag">Network Security</span>
-                            <span class="tech-tag">Subnetting</span>
+                            <span class="tech-tag">Java Spring</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Twilio API</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">HL7 Integration</span>
                         </div>
-                        <p>
-                            Designed and implemented enterprise-grade home network infrastructure supporting 20+ devices. 
-                            Achieved 15% improvement in data throughput through advanced VLAN segmentation and network optimization techniques.
-                        </p>
-                        <div class="project-highlights">
-                            <ul>
-                                <li>Advanced VLAN configuration and subnetting</li>
-                                <li>Network performance monitoring with Wireshark</li>
-                                <li>Security-focused network architecture</li>
-                            </ul>
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 3 -->
-                <div class="project-item">
-                    <div class="project-img">
-                        <img src="images/project2.jpg" alt="Blockchain Implementation" loading="lazy">
-                        <div class="overlay">
-                            <a href="project2.html" class="project-link">View Details</a>
-                        </div>
+
+                <!-- Project 4: Data Analytics Dashboard -->
+                <div class="project-card">
+                    <div class="project-image">
+                        📊
                     </div>
                     <div class="project-content">
-                        <h3><a href="project2.html">Educational Blockchain Implementation</a></h3>
+                        <h3 class="project-title">HealthMetrics Dashboard</h3>
+                        <p>Real-time analytics dashboard for healthcare facilities to track patient outcomes, resource utilization, and operational efficiency metrics.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Cryptography</span>
-                            <span class="tech-tag">Distributed Systems</span>
-                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">SQL</span>
                         </div>
-                        <p>
-                            Built a simplified blockchain from scratch to demonstrate understanding of distributed ledger technology, 
-                            including proof-of-work consensus, SHA-256 hashing, and transaction validation mechanisms.
-                        </p>
-                        <div class="project-highlights">
-                            <ul>
-                                <li>Custom proof-of-work implementation</li>
-                                <li>Secure hashing and transaction validation</li>
-                                <li>Web interface for blockchain visualization</li>
-                            </ul>
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Pharmacy Inventory -->
+                <div class="project-card">
+                    <div class="project-image">
+                        💉
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PharmInventory Pro</h3>
+                        <p>Inventory management system for pharmacies with automated reordering, expiration tracking, and DEA compliance reporting features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#/.NET</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">📊 Case Study</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Network Optimization -->
+                <div class="project-card">
+                    <div class="project-image">
+                        🌐
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hospital Network Infrastructure</h3>
+                        <p>Designed secure network architecture for healthcare facility supporting 50+ devices with HIPAA-compliant segmentation and 15% performance improvement.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">VLANs</span>
+                            <span class="tech-tag">Network Security</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">TCP/IP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">📊 Documentation</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -283,100 +670,163 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications">
+    <!-- Skills Section -->
+    <section id="skills">
         <div class="container">
-            <h2>Certifications & Education</h2>
-            <div class="cert-content">
-                <div class="cert-item">
-                    <div class="cert-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Bachelor of Science, Computer Science</h3>
-                    <p>Western Governors University</p>
-                    <span class="cert-date">Expected Spring 2026</span>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>💻 Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>✓ Java (Spring Boot, JPA)</li>
+                        <li>✓ Python (Django, Flask)</li>
+                        <li>✓ JavaScript (React, Node.js)</li>
+                        <li>✓ C# (.NET Framework)</li>
+                        <li>✓ SQL (PostgreSQL, MySQL)</li>
+                    </ul>
                 </div>
-                <div class="cert-item">
-                    <div class="cert-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Cisco Certified Network Associate (CCNA)</h3>
-                    <p>Currently Pursuing</p>
-                    <span class="cert-date">In Progress</span>
+                
+                <div class="skill-category">
+                    <h3>🏥 Healthcare IT</h3>
+                    <ul class="skill-list">
+                        <li>✓ HIPAA Compliance</li>
+                        <li>✓ HL7/FHIR Standards</li>
+                        <li>✓ EHR Integration</li>
+                        <li>✓ Medical Device IoT</li>
+                        <li>✓ Healthcare Data Analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>☁️ Cloud & DevOps</h3>
+                    <ul class="skill-list">
+                        <li>✓ AWS (EC2, S3, Lambda)</li>
+                        <li>✓ Azure Healthcare APIs</li>
+                        <li>✓ Docker & Kubernetes</li>
+                        <li>✓ CI/CD Pipelines</li>
+                        <li>✓ Git/GitHub</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>📊 Project Management</h3>
+                    <ul class="skill-list">
+                        <li>✓ Agile/Scrum Methodologies</li>
+                        <li>✓ JIRA & Confluence</li>
+                        <li>✓ Technical Documentation</li>
+                        <li>✓ Stakeholder Communication</li>
+                        <li>✓ Risk Management</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🔒 Security & Networking</h3>
+                    <ul class="skill-list">
+                        <li>✓ Network Security</li>
+                        <li>✓ CCNA (In Progress)</li>
+                        <li>✓ Data Encryption</li>
+                        <li>✓ OAuth/JWT</li>
+                        <li>✓ VPN & Firewall Config</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🎯 Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>✓ Healthcare Domain Knowledge</li>
+                        <li>✓ Patient Care Coordination</li>
+                        <li>✓ Cross-functional Collaboration</li>
+                        <li>✓ Problem-Solving</li>
+                        <li>✓ Time Management</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="contact">
         <div class="container">
-            <h2>Let's Connect</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>I'm always interested in discussing new opportunities, challenging projects, and innovative ideas in technology.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:r.minardi.angela@gmail.com">r.minardi.angela@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>301-775-6380</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Olney, Maryland</span>
-                        </div>
-                    </div>
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                I'm actively seeking opportunities in Software Engineering, Healthcare IT, or Technical Project Management. 
+                Let's discuss how I can contribute to your team!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    📧 <a href="mailto:r.minardi.angela@gmail.com">r.minardi.angela@gmail.com</a>
                 </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/angelaminardi" target="_blank" aria-label="LinkedIn Profile">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/angelaminardi" target="_blank" aria-label="GitHub Profile">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://twitter.com/angelaminardi" target="_blank" aria-label="Twitter Profile">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                <div class="contact-item">
+                    📱 301-775-6380
                 </div>
-                <!-- Contact Form -->
-                <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="_replyto" placeholder="Your Email" required>
-                    </div>
-                    <input type="text" name="subject" placeholder="Subject" required>
-                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                <div class="contact-item">
+                    📍 Olney, Maryland
+                </div>
+                <div class="contact-item">
+                    💼 <a href="https://linkedin.com/in/angelaminardi" target="_blank">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    🔗 <a href="https://github.com/angelaminardi" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="Angela_Minardi_Resume.pdf" class="btn btn-primary" style="background: var(--primary); color: white;">
+                    Download Resume
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Back to Top Button -->
-    <a href="#hero" class="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Angela Minardi. All rights reserved.</p>
-            <div class="footer-content">
-                <ul class="footer-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <p class="footer-note">Built with passion for technology and innovation</p>
-            </div>
-        </div>
-    </footer>
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--primary)';
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
