@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angela Minardi - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            color: #000000;
+            background: white;
+            font-size: 11pt;
+        }
+
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.75in;
+            background: white;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: left;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 10px;
+        }
+
+        .name {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 12pt;
+            color: #000000;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+
+        .contact-line {
+            margin-bottom: 2px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 2px;
+        }
+
+        /* Professional Summary */
+        .summary {
+            font-size: 10pt;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .job-header {
+            margin-bottom: 3px;
+        }
+
+        .job-title {
+            font-weight: bold;
+            color: #000000;
+            font-size: 11pt;
+        }
+
+        .company-date {
+            font-size: 10pt;
+            color: #000000;
+        }
+
+        .experience-list {
+            margin: 5px 0 0 20px;
+            padding: 0;
+        }
+
+        .experience-list li {
+            margin-bottom: 3px;
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+
+        /* Projects Section */
+        .project-item {
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #000000;
+            font-size: 11pt;
+            margin-bottom: 3px;
+        }
+
+        .project-description {
+            font-size: 10pt;
+            line-height: 1.3;
+            margin-bottom: 3px;
+        }
+
+        .project-tech {
+            font-size: 9pt;
+            color: #000000;
+            font-style: italic;
+        }
+
+        /* Skills Section */
+        .skills-category {
+            margin-bottom: 10px;
+        }
+
+        .skill-category-title {
+            font-weight: bold;
+            font-size: 10pt;
+            color: #000000;
+            margin-bottom: 3px;
+        }
+
+        .skill-list {
+            font-size: 10pt;
+            line-height: 1.2;
+            margin-left: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .skill-list li {
+            display: inline;
+            margin-right: 8px;
+        }
+
+        .skill-list li:after {
+            content: " •";
+        }
+
+        .skill-list li:last-child:after {
+            content: "";
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 8px;
+        }
+
+        .degree {
+            font-weight: bold;
+            color: #000000;
+            font-size: 11pt;
+        }
+
+        .institution-date {
+            font-size: 10pt;
+            color: #000000;
+        }
+
+        .coursework {
+            font-size: 10pt;
+            margin-top: 3px;
+            color: #000000;
+        }
+
+        /* Certifications */
+        .cert-item {
+            font-size: 10pt;
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .cert-name {
+            font-weight: bold;
+            color: #000000;
+        }
+
+        /* Two Column Layout for Skills */
+        .two-column {
+            display: flex;
+            gap: 30px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                font-size: 10pt;
+            }
+            
+            .resume-container {
+                padding: 0.5in;
+                margin: 0;
+                max-width: none;
+            }
+            
+            .section {
+                break-inside: avoid;
+            }
+            
+            .experience-item {
+                break-inside: avoid;
+            }
+
+            .two-column {
+                display: block;
+            }
+
+            .column {
+                margin-bottom: 10px;
+            }
+        }
+
+        /* ATS Compatibility - Remove all decorative elements for plain text */
+        @media (max-width: 1px) {
+            * {
+                background: none !important;
+                border: none !important;
+                color: black !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="name">ANGELA MINARDI</h1>
+            <div class="title">Software Engineer | Healthcare IT Specialist</div>
+            <div class="contact-info">
+                <div class="contact-line">Email: r.minardi.angela@gmail.com</div>
+                <div class="contact-line">Phone: 301-775-6380</div>
+                <div class="contact-line">Location: Olney, Maryland</div>
+                <div class="contact-line">LinkedIn: linkedin.com/in/angelaminardi</div>
+                <div class="contact-line">Portfolio: angelaminardi.github.io</div>
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section class="section">
+            <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+            <div class="summary">
+                Recent Computer Science graduate with academic projects in full-stack development and healthcare IT applications. Gained practical healthcare experience through family caregiving responsibilities while completing degree. Strong foundation in programming, database design, and network security. Seeking entry-level opportunities in Software Engineering, Healthcare IT, or related technical roles.
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="section">
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
+            
+            <div class="skills-category">
+                <div class="skill-category-title">Programming Languages:</div>
+                <ul class="skill-list">
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>C#</li>
+                    <li>C++</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skill-category-title">Frameworks and Technologies:</div>
+                <ul class="skill-list">
+                    <li>Spring Boot</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                    <li>Django</li>
+                    <li>Flask</li>
+                    <li>.NET Framework</li>
+                    <li>Express.js</li>
+                </ul>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skill-category-title">Healthcare IT (Academic Knowledge):</div>
+                <ul class="skill-list">
+                    <li>HIPAA Compliance Principles</li>
+                    <li>Healthcare Data Management</li>
+                    <li>Medical Device Programming</li>
+                    <li>Patient Care Workflows</li>
+                    <li>Healthcare System Design</li>
+                </ul>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skill-category-title">Cloud and Infrastructure:</div>
+                <ul class="skill-list">
+                    <li>AWS</li>
+                    <li>Azure</li>
+                    <li>Docker</li>
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>MySQL</li>
+                    <li>Network Security</li>
+                </ul>
+            </div>
+            
+            <div class="skills-category">
+                <div class="skill-category-title">Tools and Platforms:</div>
+                <ul class="skill-list">
+                    <li>Git</li>
+                    <li>GitHub</li>
+                    <li>JIRA</li>
+                    <li>ESP32</li>
+                    <li>MQTT</li>
+                    <li>Wireshark</li>
+                    <li>Oracle SQL</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section class="section">
+            <h2 class="section-title">EXPERIENCE</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div class="job-title">Family Caregiver</div>
+                    <div class="company-date">Private Family Care | 2021 - 2024</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Provided daily care and assistance to elderly grandparents while completing Computer Science degree</li>
+                    <li>Coordinated medical appointments and managed medication schedules</li>
+                    <li>Communicated with healthcare providers and family members regarding care needs</li>
+                    <li>Developed organizational skills managing multiple responsibilities while maintaining academic performance</li>
+                    <li>Gained firsthand exposure to healthcare processes and patient care considerations</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div class="job-title">Online English Tutor</div>
+                    <div class="company-date">Ignite Reading | 2022 - Present</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Conducted one-on-one online tutoring sessions for literacy development</li>
+                    <li>Created personalized lesson plans and tracked student progress</li>
+                    <li>Used digital tools to facilitate interactive learning experiences</li>
+                    <li>Demonstrated ability to explain concepts clearly and adapt to different learning styles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Projects -->
+        <section class="section">
+            <h2 class="section-title">ACADEMIC PROJECTS</h2>
+            
+            <div class="project-item">
+                <div class="project-title">MediTrack - Patient Management System (Academic Project)</div>
+                <div class="project-description">
+                    Developed a full-stack healthcare application prototype featuring patient records, appointment scheduling, and medication tracking. Implemented basic security features and database design principles.
+                </div>
+                <div class="project-tech">Technologies: React, Node.js, MongoDB, HTML/CSS, JavaScript</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">Fall Prevention Smart Insole (Personal Project)</div>
+                <div class="project-description">
+                    Built IoT device prototype using ESP32 microcontroller with force sensors for basic gait monitoring. Transmitted sensor data to cloud platform for analysis and storage.
+                </div>
+                <div class="project-tech">Technologies: ESP32, C++, AWS IoT, MQTT Protocol, Python</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">SmartSchedule - Appointment System (Coursework Project)</div>
+                <div class="project-description">
+                    Created appointment scheduling application with basic SMS notification features and database integration. Focused on software engineering principles and system design.
+                </div>
+                <div class="project-tech">Technologies: Java, Spring Boot, PostgreSQL, REST APIs</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">Home Network Optimization (Personal Project)</div>
+                <div class="project-description">
+                    Designed and configured home network setup supporting 20+ devices using VLANs and subnetting. Used network monitoring tools to analyze performance and troubleshoot connectivity issues.
+                </div>
+                <div class="project-tech">Technologies: Networking Hardware, VLANs, Wireshark, TCP/IP</div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="education-item">
+                <div class="degree">Bachelor of Science, Computer Science</div>
+                <div class="institution-date">Western Governor's University | Expected Fall 2025</div>
+                <div class="coursework">
+                    Relevant Coursework: Object Oriented Programming I and II, Data Structures and Algorithms, Database Design, Network Security Foundations, Software Engineering
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="section">
+            <h2 class="section-title">CERTIFICATIONS AND TRAINING</h2>
+            <div class="cert-item">
+                <span class="cert-name">Cisco Certified Network Associate (CCNA)</span> - In Progress
+            </div>
+            <div class="cert-item">
+                <span class="cert-name">AWS Cloud Practitioner</span> - Planned 2025
+            </div>
+            <div class="cert-item">
+                <span class="cert-name">Healthcare IT Foundations</span> - Self-Study
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Print functionality
+        function printResume() {
+            window.print();
+        }
+        
+        // Add print button for web view only
+        if (typeof window !== 'undefined' && window.location && window.location.protocol !== 'file:') {
+            document.addEventListener('DOMContentLoaded', function() {
+                const buttonContainer = document.createElement('div');
+                buttonContainer.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                `;
+                
+                const printBtn = document.createElement('button');
+                printBtn.textContent = 'Print/Save as PDF';
+                printBtn.style.cssText = `
+                    padding: 10px 20px;
+                    background-color: #000;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-family: Arial, sans-serif;
+                    font-size: 12px;
+                `;
+                printBtn.onclick = printResume;
+                
+                const instructionDiv = document.createElement('div');
+                instructionDiv.innerHTML = `
+                    <div style="
+                        background: #f0f0f0;
+                        padding: 10px;
+                        border-radius: 4px;
+                        font-size: 10px;
+                        max-width: 200px;
+                        font-family: Arial, sans-serif;
+                        border: 1px solid #ccc;
+                    ">
+                        <strong>For ATS-friendly PDF:</strong><br>
+                        1. Click Print/Save as PDF<br>
+                        2. Choose "Save as PDF"<br>
+                        3. Ensure "More settings" > "Options" > "Headers and footers" is OFF
+                    </div>
+                `;
+                
+                buttonContainer.appendChild(printBtn);
+                buttonContainer.appendChild(instructionDiv);
+                document.body.appendChild(buttonContainer);
+            });
+        }
+    </script>
+</body>
+</html>
